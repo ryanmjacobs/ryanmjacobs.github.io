@@ -1,0 +1,246 @@
+<!doctype html>
+<!-- Tutorials/Basic_GPG -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Home page for https://ryanmjacobs.github.io/">
+        <title>Ryan Jacobs</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="../page_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+    <body>
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading" href="#">Ryan Jacobs</a>
+
+                    <ul>
+                        <li><a href="../../">Splash Page</a></li>
+                        <li><a href="../../home">Home</a></li>
+                        <li><a href="../repositories">Repositories</a></li>
+                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>Ryan Jacobs</h1>
+                    <h2>Cool Guy Extraordinaire</h2>
+                </div>
+
+                <div class="content">
+                    <h1 class="content-subhead">Basic GPG - September 23, 2014</h1>
+
+                    <h2 class="content-subhead">Introduction</h2>
+                    <p>
+                    GPG is a key-based encryption system. Each user creates a keypair,
+                    which contains both a Public and Private Key.
+                    </p><p>
+                    Public Keys should be shared with <b>everyone</b>! A user can
+                    encrypt a message with a Public Key, and only the user with the
+                    paired Private Key can decrypt it. This is the basis of key-based
+                    encryption.
+                    </p><p>
+                    Private should be kept <b>private</b>! If your Private Key is
+                    compromised, other people could pretend to be you! Luckily,
+                    in order to compromise a Private Key, both the Private Key and the
+                    password to the Private Key are needed.
+                    </p>
+
+                    <h2 class="content-subhead">Example</h2>
+                    <p>
+                    <b>User A</b> wants to send a message to <b>User B</b> that only <b>User B</b> will be able to read.
+                    For simplicity's sake, we'll call the message: <code>msg.txt</code>.<br><br>
+
+                    So, what does <b>User A</b> do? Well first he grabs <b>User B</b>'s Public Key off of
+                    the internet,(which <b>User B</b> should have posted somewhere online or emailed it).
+                    Then <b>User A</b> encrypts <code>msg.txt</code> with <b>User B</b>'s Public Key.
+                    And finally, <b>User A</b> can post the message online or email it to <b>User B</b>,
+                    knowing fully well that only <b>User B</b> will be able to decrypt the message.<br><br>
+
+                    <em>The End.</em>
+
+                    <h2 class="content-subhead">Actually Doing It!</h2>
+                    <p>Ah... Finally, after a long, laborious introduction we can now begin to encrypt stuff!</p>
+                    <p>First let's create a fresh keypair.<br>If it asks you anything about key type, keysize, etc, just <b>go with the defaults :)</b></p>
+                    <pre><code class="bash">ryan@delta ~/example $ gpg --gen-key
+gpg (GnuPG) 2.0.26; Copyright (C) 2013 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+Please select what kind of key you want:
+   (1) RSA and RSA (default)
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+Your selection?
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (2048) 
+Requested keysize is 2048 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 
+Key does not expire at all
+Is this correct? (y/N) y
+
+GnuPG needs to construct a user ID to identify your key.
+
+Real name: Billy-Bob Joe
+Email address: bbj@website.net
+Comment: 
+You selected this USER-ID:
+    "Billy-Bob Joe <bbj@website.net>"
+
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
+You need a Passphrase to protect your secret key.
+
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+
+gpg: key DF0FDA07 marked as ultimately trusted
+public and secret key created and signed.
+
+gpg: checking the trustdb
+gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
+gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
+pub   2048R/DF0FDA07 2014-09-24
+      Key fingerprint = E81B B32C A5EE 91BE 3624  D5DD BE4D D4CB DF0F DA07
+uid       [ultimate] Billy-Bob Joe <bbj@website.net>
+sub   2048R/C5CFBED7 2014-09-24</pre></code>
+
+                    <h2 class="content-subhead">Now What?</h2>
+                    <p>
+                    Well, now that you have a keypair, you also have both a Public Key and a Private Key.<br>
+                    Let's export that Public Key so we can give it to people!
+                    </p>
+                    <pre><code class="bash">ryan@delta ~/example $ gpg -a --export
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v2
+
+mQENBFQiGIcBCADETKu64kPuMsONDQQQ+/UsI4B3DFPBlLz4r2NwEneA1Fnb4ROd
+XGV3gPqpBe23nBiHtwisOTjpmTLAZ4bng7D+/KRaHYElo7JvFyPJ5x5gG500iO+0
+m3wv3hDBfgX0fwjnnf6F//ZqL2novBW+b5qWwjRUyUPOeA1iXRcFXSt9rwWw7ilc
+dv7Fru2Z1gaTpNbBxx2z/UHqE0jLtblmN/25n8c0hNg+hEVIdcPThq1toC6tmhvR
+zxe7sJ4TBhYCZl3zQD7GGWSCVp2VzyH0PjtkCP6VlR1sjnobJDHi6+a/uMH3TVgs
+4G4DWc7ZrXD4TPwR8m9q29OiRRC2hJXwE9QzABEBAAG0H0JpbGx5LUJvYiBKb2Ug
+PGJiakB3ZWJzaXRlLm5ldD6JATkEEwECACMFAlQiGIcCGwMHCwkIBwMCAQYVCAIJ
+CgsEFgIDAQIeAQIXgAAKCRC+TdTL3w/aB1nACACms7U+zAEVJ2wadkgzsQP0fvXa
+J3ujhvFwrtzCgbJ2mSJZDaA9Pxt0LLWyUb0vDB/K8AGCKzTB6f1ys//wVPEl/jKn
+TvCqy8zhkJgDOoy3ThDvavD3bXCADf+GHEZDBtwfxzFlwkD5L5fPklMAEtqe8fJW
+Da9jc1271VrtG1Y7CF3LT2PbtLF54bpXalUhasDi9eIzDpxgnEI+728INMINb190
+Rr+NyrIlw6ZSMiRJXKHlPlUEdzjIiMZYYEULEihDmwYP8aI/RRPlIF9Astkv6PLO
+K7ei4ta1a7tExc92vFYalLqptthNoQL/S5JwBErNtYGlu/kk6xr6w8dszlbHuQEN
+BFQiGIcBCADTC+MvV1rz/Lj6EjBgJkPWq3W3yUlWUYjP5eqlHFe2Wz/9Syg0/j6q
+ONUvOMssVPF2VQzu5oBItberbj5znIvRXkHhtMSOevsML5OxDb9reRvFlu6yqkRL
+1nLDRJquA4Vn2px6gV1h+ZqauHh8qYZivNGDazXg2GuvU9+fVlu28mj0R5Fa8kRz
+7jJJWRZSb6wOgHtTThmijSuIEYbkCJKRCxMor1iveEjTHORek0l4LISnb3yFQBQk
+yMGW8rDWHVu1ktQcugfCMMTGFC+3otZNeHHkI8iEBzw230bk2DhlPfwOSTPRA0EG
+2mTPUET0oL8Y7w+9ieoPiWZkTEqm8g7jABEBAAGJAR8EGAECAAkFAlQiGIcCGwwA
+CgkQvk3Uy98P2geDKQgAjfoqaB3YZwG5nRDF1BB5gIFPbO39uI3FB4Bxfujk8Ecf
+giCtPtX7PgqhVb8dCZazhs4EB90Zs6K03wTeHp3ZfFkqSSmZuPW0XO8TQxczZw61
+PTPBpSDLl9Y7rn2DykreLYyte8Pk8Nh3K5fJWSTl78/0arGWT5A4ocxDRCXUBKy8
+TRuff3zUaf3cR03OvxSJ7G0K/YTXIMhDH1aKYx2UQW9ts9XR5Xz+D3ML07T/UTmv
+uu8pxBhQB9ktzT+Ne+MnXh+99phOhaFPgFtiHLMrXju3iKJhlHap+v/EcgXzmFHC
+lwwEmo39DVutvzYkmX3FZ2Qd6wnEm9XK7vIaX7ZKoQ==
+=yHH2
+-----END PGP PUBLIC KEY BLOCK-----</pre></code>
+                    <p>Yay! Now give that Public Key away. To your best friend,
+                    the mailman, or your best friend who happens to be a mailman!
+                    I don't care, just give it away!<br><br>
+                    Just on a side note, if you manage to import the key posted above, send me
+                    an encrypted message... <b>*wink*</b>
+
+                    <h2 class="content-subhead">Encrypting Files for Recipients</h2>
+                    <p>Let's encrypt some stuff!<br>
+                    In this example we'll be encrypting a file with ourselves as the recipient.<br><br>
+                    First we'll create a file to encrypt.</p>
+                    <pre><code class="bash">echo "I love pink poodles." > super_secret.txt</pre></code>
+                    <p>Now we'll encrypt the file... (Replace 'Billy-Bob' with your first name)</p>
+                    <pre><code class="bash">gpg --armor --encrypt --recipient 'Billy-Bob' super_secret.txt</pre></code>
+                    <p>A breakdown of the options:</p>
+                    <pre><code class="bash">--armor      # enable ascii output
+--encrypt    # we want to encrypt
+--recipient  # who will be able to decrypt it</pre></code>
+                    <p>Now you can see the encrypted file. Let's delete the old file too.</p>
+                    <pre><code class="bash">ryan@delta ~/example $ ls
+super_secret.txt  super_secret.txt.asc
+ryan@delta ~/example $ rm super_secret.txt
+ryan@delta ~/example $ ls
+super_secret.txt.asc
+
+ryan@delta ~/example $ cat super_secret.txt.asc
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+hQIMA4WxEsEqIT/MAQ//YRlvEEhmoqwa0Q72C7GScM7heMqJiyiWbxf/Y0IgazWA
++KvyQuNRPBLBFioS4rkiOZ4LviAN65iIE4uN2haxOkIicFKt18ju6AkfOOvhCk+I
+Bfjaxl3CFvcYV//mnHaKrASr4Vd2WYAsQTPsvaeGJ1VmTlXWM6N+58mf9NnmV51r
+n2N/FQNTN3SfH8Xb8DZJxibxzlexbsEsVtkE2StTP6t+wDgV8FegiSBgWD1l4IiZ
+xUY1SWB7kO7ssx3bz+xgVewaPbpbxXGhzCFAalm6G3RCP+nSZy32RAyuAull7EKJ
+dZtzcI94KAUjp2zmkYydl3aN0/tUKG/13VsZzo8cJP+1i9b3ezGTynuYhpf2UQr9
+XsrZKxFXt2Ak2ItAcSEl3YyQj99JTvsoMd97M0etQsCWIWMRXunp0leY8rL2Q3uh
+xGYAebGYVftbsf+0Pv4/gdO12nvzxFzXfDDYSnNbTN9XnqT99FOamyIDvvMVTvd3
+a/rwHo5Neal5engK9TvcF/1DeYih7UlZ3UxYxQboCHjgoD8nNGCLIva64PxbB0Us
+yhvY7g6ORV4jko/5TEzt1752MCexpX/ebwUmWvCkewTAsQbe9RWbabVYvXopzADk
+iOZmyH0pC+9RVn36sgnnD0h/jwEUG38KcDkRSlUwCZJCqznR6/fv6FVZtrqtme/S
+YAE3OCZzlmeBZc+a9OrMq6Yi2gJFs2fn7LQh1EheOl3KtooQqgmY6xy4sIkmaxYg
+kJrDIDL8iPmb+65TNVnBn0uSKPNh+CoV0SBCgvVNgPB36Fy5VYH6QVdlIS3HyHRB
+Dg==
+=gAB7
+-----END PGP MESSAGE-----
+ryan@delta ~/example $</pre></code>
+
+                    <p>Yay! We encrypted a file! You can see how the contents of <code>super_secret.txt.asc</code>
+                    look like garbage to the human eye, (but they're really not :D)</p>
+
+                    <h2 class="content-subhead">Decrypting Files Addressed to You</h2>
+                    <p>
+                    We can only decrypt files if they were encrypted with our Public Key.
+                    And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
+                    So that means: <b>We can decrypt it!</b>
+                    </p>
+                    <pre><code class="bash">ryan@delta ~/example $ ls
+super_secret.txt.asc
+ryan@delta ~/example $ gpg super_secret.txt.asc 
+password:
+ryan@delta ~/example $ ls -lh
+total 8.0K
+-rw-r--r-- 1 ryan users  21 Sep 23 18:55 super_secret.txt
+-rw-r--r-- 1 ryan users 929 Sep 23 18:44 super_secret.txt.asc
+
+ryan@delta ~/example $ cat super_secret.txt
+I love pink poodles.</pre></code>
+                    <p>As you can see, decrypting files is <em>incredibly easy</em>.</p>
+
+                    <h2 class="content-subhead">Wrapping It Up</h2>
+                    <p>
+                    I hope you learned a lot from that huge dump of information. Now you should be perfectly
+                    capable of encrypting files with Public Keys and sending them to their recipients. And, you
+                    should also be capable of decrypting files that have been encrypted with your Public Key,
+                    (which by the way is the easiest thing to do ever).<br><br>
+                    Hopefully you now understand how keypair-based encryption works!
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="../ui.js"></script>
+
+    </body>
+</html>
