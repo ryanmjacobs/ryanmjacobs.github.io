@@ -58,11 +58,11 @@
 
                     <h2 class="content-subhead">Example</h2>
                     <p>
-                    <b>User A</b> wants to send a message to <b>User B</b> that only <b>User B</b> will be able to read.
+                    <b>User A</b> wants to send a message to <b>User B</b> so that only <b>User B</b> can read it.
                     For simplicity's sake, we'll call the message: <code>msg.txt</code>.<br><br>
 
                     So, what does <b>User A</b> do? Well first he grabs <b>User B</b>'s Public Key off of
-                    the internet,(which <b>User B</b> should have posted somewhere online or emailed it).
+                    the internet, (which <b>User B</b> should have posted somewhere online or emailed it).
                     Then <b>User A</b> encrypts <code>msg.txt</code> with <b>User B</b>'s Public Key.
                     And finally, <b>User A</b> can post the message online or email it to <b>User B</b>,
                     knowing fully well that only <b>User B</b> will be able to decrypt the message.<br><br>
@@ -72,6 +72,9 @@
                     <h2 class="content-subhead">Actually Doing It!</h2>
                     <p>Ah... Finally, after a long, laborious introduction we can now begin to encrypt stuff!</p>
                     <p>First let's create a fresh keypair.<br>If it asks you anything about key type, keysize, etc, just <b>go with the defaults :)</b></p>
+                    <p>Note: You should try to have as little as possible personal keypairs. Giving a person a key that they know you'll have for a while is better
+                    than giving them a key that you may or may not change within the next month. Get what I'm saying?</p>
+                    <p>If you already have a keypair, you can skip this step.</p>
                     <pre><code class="bash">ryan@delta ~/example $ gpg --gen-key
 gpg (GnuPG) 2.0.26; Copyright (C) 2013 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
@@ -125,7 +128,7 @@ sub   2048R/C5CFBED7 2014-09-24</pre></code>
 
                     <h2 class="content-subhead">Now What?</h2>
                     <p>
-                    Well, now that you have a keypair, you also have both a Public Key and a Private Key.<br>
+                    Well, now that you have a keypair, you also have a Public Key and a Private Key.<br>
                     Let's export that Public Key so we can give it to people!
                     </p>
                     <pre><code class="bash">ryan@delta ~/example $ gpg -a --export
@@ -159,8 +162,8 @@ uu8pxBhQB9ktzT+Ne+MnXh+99phOhaFPgFtiHLMrXju3iKJhlHap+v/EcgXzmFHC
 lwwEmo39DVutvzYkmX3FZ2Qd6wnEm9XK7vIaX7ZKoQ==
 =yHH2
 -----END PGP PUBLIC KEY BLOCK-----</pre></code>
-                    <p>Yay! Now give that Public Key away. To your best friend,
-                    the mailman, or your best friend who happens to be a mailman!
+                    <p>Yay! Now give that Public Key away! To your best friend,
+                    to the mailman, or to your best friend who happens to be the mailman!
                     I don't care, just give it away!<br><br>
                     Just on a side note, if you manage to import the key posted above, send me
                     an encrypted message... <b>*wink*</b>
@@ -173,9 +176,10 @@ lwwEmo39DVutvzYkmX3FZ2Qd6wnEm9XK7vIaX7ZKoQ==
                     <p>Now we'll encrypt the file... (Replace 'Billy-Bob' with your first name)</p>
                     <pre><code class="bash">gpg --armor --encrypt --recipient 'Billy-Bob' super_secret.txt</pre></code>
                     <p>A breakdown of the options:</p>
-                    <pre><code class="bash">--armor      # enable ascii output
---encrypt    # we want to encrypt
---recipient  # who will be able to decrypt it</pre></code>
+                    <pre><code class="bash">--armor      # -a, enable ascii output
+--encrypt    # -e, we want to encrypt
+--recipient  # -r, who will be able to decrypt it
+# Typically you'll use the short options, but it helps to understand what the options mean first.</pre></code>
                     <p>Now you can see the encrypted file. Let's delete the old file too.</p>
                     <pre><code class="bash">ryan@delta ~/example $ ls
 super_secret.txt  super_secret.txt.asc
@@ -208,7 +212,7 @@ ryan@delta ~/example $</pre></code>
                     <p>Yay! We encrypted a file! You can see how the contents of <code>super_secret.txt.asc</code>
                     look like garbage to the human eye, (but they're really not :D)</p>
 
-                    <h2 class="content-subhead">Decrypting Files Addressed to You</h2>
+                    <h2 class="content-subhead">Decrypting Files Addressed to Your Public Key</h2>
                     <p>
                     We can only decrypt files if they were encrypted with our Public Key.
                     And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
@@ -232,7 +236,7 @@ I love pink poodles.</pre></code>
                     I hope you learned a lot from that huge dump of information. Now you should be perfectly
                     capable of encrypting files with Public Keys and sending them to their recipients. And, you
                     should also be capable of decrypting files that have been encrypted with your Public Key,
-                    (which by the way is the easiest thing to do ever).<br><br>
+                    (which by far is the easiest thing).<br><br>
                     Hopefully you now understand how keypair-based encryption works!
                     </p>
 
