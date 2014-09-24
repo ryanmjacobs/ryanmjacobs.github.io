@@ -1,0 +1,230 @@
+<!doctype html>
+<!-- Tutorials/More_GPG -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Home page for https://ryanmjacobs.github.io/">
+        <title>Ryan Jacobs</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="../../site_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+    <body>
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading" href="../../home">Ryan Jacobs</a>
+
+                    <ul>
+                        <li><a href="../../">Splash Page</a></li>
+                        <li><a href="../../home">Home</a></li>
+                        <li><a href="../repositories">Repositories</a></li>
+                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
+                        <li><a href="../cheatsheets">Cheatsheets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>Ryan Jacobs</h1>
+                    <h2>Cool Guy Extraordinaire</h2>
+                </div>
+
+                <div class="content">
+                    <h1 class="content-subhead">More GPG - September 24, 2014</h1>
+
+                    <h2 class="content-subhead">Introduction</h2>
+                    <p>
+                    Welcome back! In this tutorial we will explore even more GPG concepts,
+                    such as keyservers, importing keys, and signing keys. Oh fun!
+                    (By the way, I assume you understand everything covered in
+                    <a href="basic_gpg.html">Basic GPG</a>.)
+                    </p>
+
+                    <h2 class="content-subhead">First Up: Keyservers</h2>
+                    <p>
+                    Right now you may be wondering, "Hey Ryan, what the heck is a keyserver
+                    and why would I need one?" And that's great, because I'm about to tell you.<br><br>
+                    
+                    You see, in layman's terms a keyserver is a computer way off in who knows where that
+                    collects and serves Public Keys. Why is this useful? Well, now anyone who has
+                    access to that keyserver now has access to thousands of Public Keys. We don't
+                    need to send an email everytime we want someone's Public Key.<br><br>
+
+                    So now we will upload our Public Key to the keyserver: pgp.mit.edu
+                    <pre><code class="bash"># Find out our pub Key_ID
+ryan@delta ~ $ gpg --list-keys
+/home/ryan/.gnupg/pubring.gpg
+-----------------------------
+pub   4096R/5F8A8181 2013-09-30
+uid       [ultimate] Ryan Jacobs <ryan.mjacobs@gmail.com>
+sub   4096R/2A213FCC 2013-09-30
+
+# Upload our Public Key (found from prior command)
+ryan@delta ~ $ gpg --keyserver pgp.mit.edu --send-keys 5F8A8181
+gpg: sending key 5F8A8181 to hkp server pgp.mit.edu</pre></code>
+                    </p>
+
+                    <h2 class="content-subhead">Importing Keys</h2>
+                    <p>
+                    Rember that thing called a "keyserver"? Okay, good. So say we're working with
+                    a guy, and we want to send him an encrypted message that only he can read.
+                    Well, in order for us to encrypt something that only he can decrypt, we need
+                    his Public Key. And how do we do that? <b>A keyserver!</b><br><br>
+                    Let's import his key! By the way, "him" is really me.
+                    <pre><code class="bash">ryan@delta ~ $ gpg --keyserver pgp.mit.edu --search-keys 'Ryan Jacobs'
+gpg: searching for "Ryan Jacobs" from hkp server pgp.mit.edu
+(1)     Ryan Jacobs <maroni720@gmail.com>
+          2048 bit RSA key 34134FFB, created: 2014-02-08
+(2)     Ryan Jacobs <ryan.mjacobs@gmail.com>
+        Ryan Jacobs (Dukelana) <ryan.mjacobs@gmail.com>
+          4096 bit RSA key 5F8A8181, created: 2013-09-30
+(3)     Ryan Jacobs (7 day file encryption testing key) <ryan.mjacobs@gmail.co
+                                         4096 bit RSA key 491D92BF, created: 2013-09-28
+                               (4)     Ryan Jacobs <ryan.mjacobs@gmail.com>
+          2048 bit RSA key 5DABDC7F, created: 2013-06-10
+(5)     Ryan Jacobs <ryan@aisla.com>
+          1024 bit DSA key B1D60BA1, created: 2001-02-14
+(6)     Ryan Jacobs <ryan@aisla.com>
+          2048 bit RSA key 0C93AE23, created: 2001-02-14
+Keys 1-6 of 6 for "Ryan Jacobs".  Enter number(s), N)ext, or Q)uit > 2
+gpg: requesting key 5F8A8181 from hkp server pgp.mit.edu
+gpg: key 5F8A8181: "Ryan Jacobs <ryan.mjacobs@gmail.com>" 1 new signature
+gpg: Total number processed: 1
+gpg:         new signatures: 1</pre></code>
+                    Yay! We got my key! (By the way, 5F8A8181 is my Key_ID.)<br>
+                    There may need to be some communication via email or other to determine which
+                    Key_ID is the person's you want.
+                    </p>
+
+                    <h2 class="content-subhead">Using an Imported Key</h2>
+                    <p>
+                    Now that we have my key, let's encrypt a message.
+                    <pre><code class="bash"># Create file
+ryan@delta ~/example $ echo "I love pink poodles." > secret_message.txt
+ryan@delta ~/example $ ls
+secret_message.txt
+
+# Encrypt the file
+ryan@delta ~/example $ gpg -a -e -r Ryan secret_message.txt 
+ryan@delta ~/example $ ls
+secret_message.txt  secret_message.txt.asc
+
+# Remove the unencrypted file
+ryan@delta ~/example $ rm secret_message.txt
+ryan@delta ~/example $ ls
+secret_message.txt.asc
+
+# What does the message say?
+# (Probably gibberish to us humans)
+ryan@delta ~/example $ cat secret_message.txt.asc 
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+hQIMA4WxEsEqIT/MAQ//TpA2KClvNd8VhtyZM+FTMaRFvsu9VS1UXofUj/ya4eEy
+JXVEvdg4D7B8wgn6DBpDEl8P12ULd+hGA91N6lv09PL36TNVlhvyCGxQCsEjJjjU
+Cvp/JaFMcD7mKlsJ4PllYHTgfO7u44R6fCLvNQyN9R9tCS/vLkVsEVioI2YEKVKr
+nZrpyiHdSnyT/tC9gM9ihmZfjoQH3Qjvy6pXmvSvr13raarBbz3RYFHAmaMrd8zs
+UChcV+til2UQ/oYR+wX+iobmwwKT7+CIXF56geVeCuCMOuXpLZlV0qKH4LzkfhBT
+ojkNOyudIYObs8zpyWXh87SNwU0FiQT5OVD8SduTv9JamI5ZjkBHKARpShlEQyOt
+3VQsIlYeJ1lNx2Wi5Q2F6LJtqwTvsYAQXWciCd3lnAtfqKlQtxlH3rcGaqyDgNNy
+usT1seFtrJaGxlUejyJw5LLdK1cGBblRK4W9u+CbcMUed6sfAe2Uc+r82kFk+iM5
+WUxA45xZoEXC3/oVZ7RWX0PSySlVWNd1svfQGRjS5rMhwJ1aLoX2z0pj0s5L7Hi9
+t5JmBQcJjo2xAkiZ9zr/SZdjdU7LoAbuc6jNrz00IjYQl0adgAY0o0m6WGiBw0nM
+eCrPcj6J5uevN4heQBkKk2unipsYLej8TcfZci6+wzaaHtWmayy9HqiBDCo3pGTS
+YgFPt3cnYUToPr2ETsWuaC+Rvx2Y5oWTSNGgw05yB8ipZWFXsHVFRPrkzcpy7Xzq
+OUSbQNTEOe0sDkGPtlrFp9+EtjZ9W5Iu2ia7SLg8OBNBNmaivzYkdPEg7mTPEoNc
+sBPz
+=pssN
+-----END PGP MESSAGE-----</pre></code>
+                    Yay! We encrypted a file with someone else's Public Key! Particularly mine!<br><br>
+                    Now if you try to decrypt this file, you'll find that you can't. Why? You don't
+                    have the Private Key!
+                    <pre><code class="bash"># Decrypt the file when you <em><b>don't have</b></em> the Private Key
+not_ryan@other_computer ~ $ gpg secret_message.txt.asc
+gpg: decryption failed: No secret key
+# Oh no! It doesn't work!</pre></code>
+
+                    <pre><code class="bash"># Decrypt the file when you <em><b>have</b></em> the Private Key
+ryan@delta ~/example $ gpg secret_message.txt.asc 
+
+You need a passphrase to unlock the secret key for user: "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;"
+4096-bit RSA key, ID 2A213FCC, created 2013-09-30 (main key ID 5F8A8181)
+
+gpg: encrypted with 4096-bit RSA key, ID 2A213FCC, created 2013-09-30
+      "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;"
+
+ryan@delta ~/example $ ls
+secret_message.txt  secret_message.txt.asc
+ryan@delta ~/example $ cat secret_message.txt
+I love pink poodles.
+# Ooh... Big surprise, it works.</pre></code>
+                    </p>
+
+                    <h2 class="content-subhead">GPG Signing</h2>
+                    <p>
+                    In GPG, signing is used in two distinct ways:
+                    <ol>
+                        <li>To ensure that a file will not be tampered with (protect its integrity)</li>
+                        <li>To show that you trust someone's key</li>
+                    </ol>
+
+                    The first use is when you sign a file to ensure it's integrity.
+                    Think checksums. If someone modifies what you said in an email and it
+                    was GPG signed, '<code>gpg --verify</code>' will let you know
+                    that a change has been made and the signature doesn't match up.<br><br>
+
+                    Here's an example:
+                    <pre><code class="bash"># Sign a file to protect integrity
+ryan@delta ~/example $ echo "Do not tamper with this message." > dont_tamper.txt
+ryan@delta ~/example $ gpg --clearsign dont_tamper.txt && rm dont_tamper.txt
+
+# Verify the file's integrity
+ryan@delta ~/example $ gpg --verify dont_tamper.txt.asc 
+gpg: Signature made Tue 23 Sep 2014 09:39:02 PM PDT using RSA key ID 5F8A8181
+gpg: Good signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]
+
+# Modify the file, then verify integrity
+ryan@delta ~/example $ sed -i 's/Do not/Please/g' dont_tamper.txt.asc # Replace 'Do not' with 'Please'
+ryan@delta ~/example $ gpg --verify dont_tamper.txt.asc 
+gpg: Signature made Tue 23 Sep 2014 09:39:02 PM PDT using RSA key ID 5F8A8181
+gpg: BAD signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]</pre></code><br>
+
+                    Difference between <code>--sign</code> and <code>--clearsign</code>:
+                    <pre><code class="bash"># --sign vs --clearsign
+--sign       # sign file & output binary; good for non-text files, e.g. images
+--clearsign  # sign file & output ascii;  good for text files,     e.g. emails</pre></code><br>
+
+                    The second use is when you sign someone's key to show that you trust them.<br>
+                    Steps to sign someone's key:
+                    <ol>
+                        <li>Get their Key_ID and fingerprint.</li>
+                        Preferably meet in person. Ask for their Key_ID and fingerprint.
+                        <li>Download their key.</li>
+                        <code>gpg --keyserver pgp.mit.edu --recv-keys &lt;Key_ID&gt;</code>
+                        <li>Verify fingerprints are the same.</li>
+                        <code>gpg --fingerprint &lt;Key_ID&gt;</code>
+                        <li>Sign their key.</li>
+                        <code>gpg --sign-key &lt;Key_ID&gt;</code>
+                        <li>Upload their key back to the keyserver.</li>
+                        <code>gpg --keyserver pgp.mit.edu --send-key &lt;Key_ID&gt;</code>
+                    </ol>
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="../../ui.js"></script>
+
+    </body>
+</html>
