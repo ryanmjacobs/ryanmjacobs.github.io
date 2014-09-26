@@ -7,6 +7,11 @@
         <title>Ryan Jacobs</title>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
         <link rel="stylesheet" href="../../site_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
 </head>
 
     <body>
@@ -35,6 +40,193 @@
 
                 <div class="content">
                     <h1 class="content-subhead">Bash Cheatsheet</h1>
+                    <p>
+                    If you run into any problems, check out the
+                    <a href="#troubleshooting">Troubleshooting</a> section.
+                    </p>
+
+                    <h2 class="content-subhead"><b>The One Command That Everyone Should Know</b></h4>
+                    <pre><code class="bash"># The One Command That Everyone Should Know... is 'man'.
+# Every command has a manpage.
+# Want to know a command's purpose and/or usage? Read it's manpage!
+
+# Usage: man [topic]
+ryan@delta ~ $ man ls
+
+# Usage: man -k &lt;search_term&gt;
+ryan@delta ~ $ man -k zip
+bzip2 (1)            - a block-sorting file compressor, v1.0.6
+gzip (1)             - compress or expand files
+zip (1)              - package and compress (archive) files
+</pre></code>
+                    <h2 class="content-subhead">Common Commands</h2>
+                    <pre><code class="bash"># command &lt;mandatory&gt; [optional]
+
+## Navigation ##
+ls [dir]                 # List directory contents
+ls -a                    # List all contents
+ls -l                    # Long listing
+ls -1                    # List every item on a new line
+ls -lh                   # Long listing, human readable
+ls -lh *.jpg             # List all .jpg files
+
+cd [dir]                 # Change into directory
+cd ..                    # Go up a directory
+cd ../../                # Go up two directories
+cd /                     # Go to root directory
+
+pwd                      # Print working directory
+du -sh                   # Show directory's disk usage
+
+## File Manipulation ##
+touch &lt;file&gt;             # Create file
+mkdir &lt;dirname&gt;          # Make a directory 
+
+cat   &lt;file&gt;             # Output file contents
+wc -l &lt;file&gt;             # Count lines in file
+wc -w &lt;file&gt;             # Count words in file
+wc -c &lt;file&gt;             # Count characters in file
+grep &lt;pattern&gt; &lt;file&gt;    # Search file for pattern
+
+head [-n lines] &lt;file&gt;   # Get <b>n</b> from the top of the file
+tail [-n lines] &lt;file&gt;   # Get <b>n</b> from the bottom of the file
+
+rm     &lt;file&gt;            # Remove file
+rm -r  &lt;folder&gt;          # Remove recursively
+rm -rv &lt;folder&gt;          # Remove recursively <em>and</em> verbosely
+rm -f  &lt;file&gt;            # Remove forcefully
+
+cp &lt;src&gt; &lt;dest&gt;          # Copy a file
+mv &lt;src&gt; &lt;dest&gt;          # Move a file
+
+ln    &lt;file&gt; &lt;link&gt;      # Create a hardlink
+ln -s &lt;file&gt; &lt;link&gt;      # Create a symlink
+
+## Information & Administration ##
+date                     # Show date and time
+w                        # Show who is logged in and what they are doing
+top                      # Dynamic process list; (q to quit, h for help, k to kill process)
+
+kill    &lt;pid&gt;            # Kill a process based on PID (Process ID)
+kill -9 &lt;pid&gt;            # Force kill PID
+killall &lt;process_name&gt;   # Kill a process based on name
+
+## Other ##
+echo  &lt;string&gt;           # Output a string
+sleep &lt;seconds&gt;          # Pause for <b>n</b> seconds</pre></code>
+
+                    <h2 class="content-subhead">Terminal Shortcuts</h2>
+                    <pre><code class="bash">## Terminal Shortcuts ##
+Ctrl+C                   # Kill current process
+Ctrl+L                   # Clear terminal
+Ctrl+A                   # Move cursor to beginning of prompt
+Ctrl+E                   # Move cursor to end of prompt
+Ctrl+Shift+C             # Copy terminal selection to clipboard
+Ctrl+Shift+V             # Paste clipboard into terminal
+Shift + Page Up/Down     # Scroll up/down the terminal
+</pre></code>
+
+                    <h2 class="content-subhead">BASH Expansion</h2>
+                    <pre><code class="bash">## BASH Expansion ##
+echo {1,2,3}                   # Expands to "1 2 3"
+echo {1..5}                    # Expands to "1 2 3 4 5"
+echo {01..05}                  # Expands to "01 02 03 04 05"
+echo {a..e}                    # Expands to "a b c d e"
+
+mkdir {A..Z}                   # Creates 26 directories named A thru Z
+touch File_{A..C}              # Creates files: File_A, File_B, and File_C
+touch main.{c,h}               # Creates files: main.c and main.h
+</pre></code>
+
+                    <h2 class="content-subhead">BASH Job Control</h2>
+                    <pre><code class="bash">## BASH Job Control ##
+&lt;command&gt; &              # Run a command in the background
+&lt;command&gt; &>/dev/null    # Suppress a command's output
+&lt;command&gt; &>/dev/null &  # Suppress a command's output <em>and</em> run it in the background
+
+Ctrl-Z                   # Stop current process
+fg                       # Put stopped process in foreground
+bg                       # Put stopped process in background
+
+jobs                     # List current running jobs</pre></code>
+
+                    <h2 class="content-subhead">Permissions</h2>
+                    <pre><code class="bash">## File Permissions ##
+chmod +x &lt;file&gt;          # Make file executable
+chmod -x &lt;file&gt;          # Make file not executable</pre></code>
+
+                    <h2 class="content-subhead">Basic Stream Redirection</h2>
+                    <pre><code class="bash">#############################
+##         Piping          ##
+#############################
+# Piping is taking the output of one command and using as the input to another.
+# Get the number of files in directory by counting lines of 'ls' with 'wc -l'
+ryan@delta ~ $ ls
+01  02  03  04  05  06  07  08  09  10
+ryan@delta ~ $ ls -1 | wc -l
+10
+
+#############################
+##  Redirection to a File  ##
+#############################
+#  Use the '>' operator to save the output of a command to a file.
+ryan@delta ~ $ ls
+ryan@delta ~ $ echo "Hello world!" > file
+ryan@delta ~ $ ls
+file
+ryan@delta ~ $ cat file 
+Hello world!
+
+# Use the '>>' operator to append to the file instead of overwriting.
+ryan@delta ~/example $ echo "I am on line two!" >> file
+ryan@delta ~/example $ cat file 
+Hello world!
+I am on line two!</pre></code>
+
+                    <div id="troubleshooting">
+                        <h2 class="content-subhead">Troubleshooting</h2>
+                        <h3 class="content-subhead"><b>I can't do anything with spaces!</b></h3>
+                        <p>This is because of how BASH handles strings. BASH strings must be
+                        single-quoted, double-quoted, or space-escaped.<br>An Example:</p>
+                        <pre><code class="bash"># Let's create a file called: Hello World.txt
+ryan@delta ~ $ touch Hello World.txt
+
+# Uh oh, BASH interpreted our filename as two separate strings
+ryan@delta ~ $ ls
+-rw-r--r-- 1 ryan users 0 Sep 26 19:03 Hello
+-rw-r--r-- 1 ryan users 0 Sep 26 19:03 World.txt
+
+# Let's try it with single quotes
+ryan@delta ~ $ touch 'Hello World.txt'
+ryan@delta ~ $ ls -l
+-rw-r--r-- 1 ryan users 0 Sep 26 19:03 Hello World.txt
+
+# Let's try it with double quotes
+ryan@delta ~ $ touch "Hello World.txt"
+ryan@delta ~ $ ls -l
+-rw-r--r-- 1 ryan users 0 Sep 26 19:03 Hello World.txt
+
+# Let's try it with space-escaping (a backslash before every space)
+ryan@delta ~ $ touch Hello\ World.txt
+ryan@delta ~ $ ls -l
+-rw-r--r-- 1 ryan users 0 Sep 26 19:03 Hello World.txt
+
+# Oh boy! They all work!
+</pre></code>
+
+                        <h3 class="content-subhead"><b>I can't use exclamation marks!</b></h3>
+                        <p>Certain symbols have specific meanings in BASH. One of these is the
+                        exclamation mark. You can use one if it's within single-quotes. Single-quotes
+                        tell BASH interpret the string literally.</p>
+                        <pre><code class="bash"># Exclamation mark in double quotes. Boo, it fails.
+ryan@delta ~ $ echo "I! AM! A!WEIRD!STRING!"
+bash: !WEIRD!STRING!: event not found
+
+# Exclamation mark in single quotes. Yay, it works!
+ryan@delta ~ $ echo 'I! AM! A!WEIRD!STRING'
+I! AM! A!WEIRD!STRING
+</pre></code>
+                    </div>
                 </div>
             </div>
         </div>
