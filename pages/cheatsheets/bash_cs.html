@@ -40,10 +40,10 @@
 
                 <div class="content">
                     <h1 class="content-subhead">Bash Cheatsheet</h1>
-                    <p>
-                    If you run into any problems, check out the
-                    <a href="#troubleshooting">Troubleshooting</a> section.
-                    </p>
+                    <h2 class="content-subhead"><b>Bourne-Again Shell</b></h2>
+
+                    <p>If you run into any problems, check out the
+                    <a href="#troubleshooting">Troubleshooting</a> section.</p>
 
                     <h2 class="content-subhead"><b>The One Command That Everyone Should Know</b></h4>
                     <pre><code class="bash"># The One Command That Everyone Should Know... is 'man'.
@@ -60,9 +60,8 @@ gzip (1)             - compress or expand files
 zip (1)              - package and compress (archive) files
 </pre></code>
                     <h2 class="content-subhead">Common Commands</h2>
-                    <pre><code class="bash"># command &lt;mandatory&gt; [optional]
-
-## Navigation ##
+                    <pre><code class="bash"># command &lt;mandatory&gt; [optional]</pre></code>
+                    <pre><code class="bash">## Navigation ##
 ls [dir]                 # List directory contents
 ls -a                    # List all contents
 ls -l                    # Long listing
@@ -76,9 +75,9 @@ cd ../../                # Go up two directories
 cd /                     # Go to root directory
 
 pwd                      # Print working directory
-du -sh                   # Show directory's disk usage
+du -sh                   # Show directory's disk usage</pre></code>
 
-## File Manipulation ##
+<pre><code class="bash">## File Manipulation ##
 touch &lt;file&gt;             # Create file
 mkdir &lt;dirname&gt;          # Make a directory 
 
@@ -100,18 +99,18 @@ cp &lt;src&gt; &lt;dest&gt;          # Copy a file
 mv &lt;src&gt; &lt;dest&gt;          # Move a file
 
 ln    &lt;file&gt; &lt;link&gt;      # Create a hardlink
-ln -s &lt;file&gt; &lt;link&gt;      # Create a symlink
+ln -s &lt;file&gt; &lt;link&gt;      # Create a symlink</pre></code>
 
-## Information & Administration ##
+<pre><code class="bash">## Information & Administration ##
 date                     # Show date and time
 w                        # Show who is logged in and what they are doing
 top                      # Dynamic process list; (q to quit, h for help, k to kill process)
 
 kill    &lt;pid&gt;            # Kill a process based on PID (Process ID)
 kill -9 &lt;pid&gt;            # Force kill PID
-killall &lt;process_name&gt;   # Kill a process based on name
+killall &lt;process_name&gt;   # Kill a process based on name</pre></code>
 
-## Other ##
+<pre><code class="bash">## Other ##
 echo  &lt;string&gt;           # Output a string
 sleep &lt;seconds&gt;          # Pause for <b>n</b> seconds</pre></code>
 
@@ -137,6 +136,43 @@ mkdir {A..Z}                   # Creates 26 directories named A thru Z
 touch File_{A..C}              # Creates files: File_A, File_B, and File_C
 touch main.{c,h}               # Creates files: main.c and main.h
 </pre></code>
+                    <h2 class="content-subhead">Semi-colon, &&, and ||</h2>
+                    <pre><code class="bash">## Semi-colon Operator ##
+#  means 'do that after this'
+ryan@delta ~ $ echo hello; echo world
+hello
+world
+</pre></code>
+
+                    <pre><code class="bash">## && Operator ##
+#  means 'only if successful, do that after this'
+ryan@delta ~ $ echo hello && echo world
+hello
+world
+
+ryan@delta ~ $ Fake_Command && echo world
+bash: Fake_Command: command not found
+</pre></code>
+
+                    <pre><code class="bash">## || Operator ##
+#  means 'only if failure, do that after this'
+ryan@delta ~ $ Fake_Command || echo "Failure!"
+bash: Fake_Command: command not found
+Failure!
+</pre></code>
+                    <pre><code class="bash">## Mixing semi-colon, &&, and || ##
+ryan@delta ~ $ touch MyFile
+ryan@delta ~ $ echo "Removing..."; rm MyFile && echo "Yay!" || echo "Boo!"; echo "Done."
+Removing...
+Yay!
+Done.
+
+ryan@delta ~ $ echo "Removing..."; rm MyFile && echo "Yay!" || echo "Boo!"; echo "Done."
+Removing...
+rm: cannot remove ‘MyFile’: No such file or directory
+Boo!
+Done.
+</pre></code>
 
                     <h2 class="content-subhead">BASH Job Control</h2>
                     <pre><code class="bash">## BASH Job Control ##
@@ -147,7 +183,6 @@ touch main.{c,h}               # Creates files: main.c and main.h
 Ctrl-Z                   # Stop current process
 fg                       # Put stopped process in foreground
 bg                       # Put stopped process in background
-
 jobs                     # List current running jobs</pre></code>
 
                     <h2 class="content-subhead">Permissions</h2>
@@ -164,9 +199,9 @@ chmod -x &lt;file&gt;          # Make file not executable</pre></code>
 ryan@delta ~ $ ls
 01  02  03  04  05  06  07  08  09  10
 ryan@delta ~ $ ls -1 | wc -l
-10
+10</pre></code>
 
-#############################
+<pre><code class="bash">#############################
 ##  Redirection to a File  ##
 #############################
 #  Use the '>' operator to save the output of a command to a file.
@@ -215,9 +250,9 @@ ryan@delta ~ $ ls -l
 </pre></code>
 
                         <h3 class="content-subhead"><b>I can't use exclamation marks!</b></h3>
-                        <p>Certain symbols have specific meanings in BASH. One of these is the
-                        exclamation mark. You can use one if it's within single-quotes. Single-quotes
-                        tell BASH interpret the string literally.</p>
+                        <p>Certain symbols have specific meanings in BASH. Such as the semi-colon, &&,
+                        ||, or exclamation mark. Single-quotes tell BASH to interpret the string
+                        literally.</p>
                         <pre><code class="bash"># Exclamation mark in double quotes. Boo, it fails.
 ryan@delta ~ $ echo "I! AM! A!WEIRD!STRING!"
 bash: !WEIRD!STRING!: event not found
