@@ -1,0 +1,88 @@
+<!doctype html>
+<!-- Cheatsheets/ALSA -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Home page for https://ryanmjacobs.github.io/">
+        <title>Ryan Jacobs</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="../../site_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+    <body>
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading" href="../../home">Ryan Jacobs</a>
+
+                    <ul>
+                        <li><a href="../../">Splash Page</a></li>
+                        <li><a href="../../home">Home</a></li>
+                        <li><a href="../repositories">Repositories</a></li>
+                        <li><a href="../tutorials">Tutorials</a></li>
+                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Cheatsheets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>Ryan Jacobs</h1>
+                    <h2>Cool Guy Extraordinaire</h2>
+                </div>
+
+                <div class="content">
+                    <h1 class="content-subhead">MPV Cheatsheet</h1>
+                    <h2 class="content-subhead"><b>a free, open source, and cross-platform media player</b></h2>
+
+                    <h2 class="content-subhead"><b>Typical Options</b></h2>
+                    <pre><code class="bash">mpv --fs                    # Play fullscreen
+mpv --start=&lt;time&gt;          # Seek to given (percent, seconds, or hh:mm:ss)
+mpv --speed=&lt;0.01-100&gt;      # Slow down or speed up playback by the factor given.
+
+mpv --no-audio              # Don't play sound
+mpv --no-video              # Don't play video
+
+mpv --sub-file=&lt;file&gt;       # Specify subtitle file
+mpv --playlist=&lt;file&gt;       # Specify playlist file</pre></code>
+
+                    <h2 class="content-subhead"><b>Shortcuts</b></h2>
+                    <pre><code class="bash">## File Navigation ##
+LEFT and RIGHT              # Seek backward/forward 5 seconds.
+UP and DOWN                 # Seek forward/backward 1 minute.
+p / SPACE                   # Pause, (pressing again unpauses).
+.                           # Step one frame forwards.
+,                           # Step one frame backwards.
+
+## Playlist Control ##
+&lt; and &gt;                     # Go backward/forward in the playlist.
+ENTER                       # Go forward in playlist.
+q / ESC                     # Stop playing and quit.
+
+## Volume & Speed ##
+9 and 0                     # Decrease/increase volume.
+[ and ]                     # Decrease/increase current playback speed by 10%.
+{ and }                     # Halve/double current playback speed.
+BACKSPACE                   # Reset playback speed to normal.
+
+## Actions ##
+s                           # Take a screenshot.
+m                           # Mute sound.
+f                           # Toggle fullscreen.
+T                           # Toggle stay-on-top.
+</pre></code>
+                </div>
+            </div>
+        </div>
+
+        <script src="../../ui.js"></script>
+
+    </body>
+</html>
