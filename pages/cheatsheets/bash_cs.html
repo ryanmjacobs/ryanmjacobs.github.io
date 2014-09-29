@@ -126,16 +126,23 @@ Shift + Page Up/Down     # Scroll up/down the terminal
 </pre></code>
 
                     <h2 class="content-subhead">BASH Expansion</h2>
-                    <pre><code class="bash">## BASH Expansion ##
+                    <pre><code class="bash">## Braces! ##
 echo {1,2,3}                   # Expands to "1 2 3"
 echo {1..5}                    # Expands to "1 2 3 4 5"
 echo {01..05}                  # Expands to "01 02 03 04 05"
 echo {a..e}                    # Expands to "a b c d e"
+echo {word1,word2,word3}       # Expands to "word1 word2 word3"
 
 mkdir {A..Z}                   # Creates 26 directories named A thru Z
 touch File_{A..C}              # Creates files: File_A, File_B, and File_C
-touch main.{c,h}               # Creates files: main.c and main.h
-</pre></code>
+touch main.{c,h}               # Creates files: main.c and main.h</pre></code>
+                    <pre><code class="bash">## Wildcards! ##
+# '*' is the Star Wildcard. It represents anything.
+
+ryan@delta ~ $ ls *.jpg  # List all files with the .jpg extension
+ryan@delta ~ $ rm *.jpg  # Remove all .jpg files
+ryan@delta ~ $ rm *      # REMOVE EVERYTHING!!!</pre></code>
+
                     <h2 class="content-subhead">Semi-colon, &&, and ||</h2>
                     <pre><code class="bash">## Semi-colon Operator ##
 #  means 'do that after this'
