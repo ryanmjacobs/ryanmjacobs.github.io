@@ -41,7 +41,7 @@
                 <div class="content">
                     <h1 class="content-subhead">GPG Part 1 - September 23, 2014</h1>
 
-                    <h2 class="content-subhead">Introduction</h2>
+                    <h2 class="content-subhead"><b>Introduction</b></h2>
                     <p>
                     GPG is a key-based encryption system. Each user creates a keypair,
                     which contains both a Public and a Private Key.
@@ -57,7 +57,7 @@
                     password to the Private Key are needed.
                     </p>
 
-                    <h2 class="content-subhead">Example</h2>
+                    <h2 class="content-subhead"><b>Example</b></h2>
                     <p>
                     <b>Alice</b> wants to send a message to <b>Bob</b> so that only <b>Bob</b> can read it.
                     For simplicity's sake, we'll call the message: <code>msg.txt</code>.<br><br>
@@ -70,7 +70,7 @@
 
                     <em>The End.</em>
 
-                    <h2 class="content-subhead">Actually Doing It!</h2>
+                    <h2 class="content-subhead"><b>Actually Doing It!</b></h2>
                     <p>Ah... Finally, after a long, laborious introduction we can now begin to encrypt stuff!</p>
                     <p>First let's create a fresh keypair.<br>If it asks you anything about key type, keysize, etc, just <b>go with the defaults :)</b></p>
                     <p>Note: You should try to have as little as possible personal keypairs. Giving a person a key that they know you'll have for a while is better
@@ -127,7 +127,7 @@ pub   2048R/DF0FDA07 2014-09-24
 uid       [ultimate] Billy-Bob Joe <bbj@website.net>
 sub   2048R/C5CFBED7 2014-09-24</pre></code>
 
-                    <h2 class="content-subhead">Now What?</h2>
+                    <h2 class="content-subhead"><b>Now What?</b></h2>
                     <p>
                     Well, now that you have a keypair, you also have a Public Key and a Private Key.<br>
                     Let's export that Public Key so we can give it to people!
@@ -172,7 +172,7 @@ lwwEmo39DVutvzYkmX3FZ2Qd6wnEm9XK7vIaX7ZKoQ==
                     (which is fine). You'll learn about this in <a href="gpg_part2.html">GPG - Part 2</a>.
                     </p>
 
-                    <h2 class="content-subhead">Encrypting Files for Recipients</h2>
+                    <h2 class="content-subhead"><b>Encrypting Files for Recipients</b></h2>
                     <p>Let's encrypt some stuff!<br>
                     In this example we'll be encrypting a file with ourselves as the recipient.<br><br>
                     First we'll create a file to encrypt.</p>
@@ -216,7 +216,7 @@ ryan@delta ~/example $</pre></code>
                     <p>Yay! We encrypted a file! You can see how the contents of <code>super_secret.txt.asc</code>
                     look like garbage to the human eye, (but they're really not :D)</p>
 
-                    <h2 class="content-subhead">Decrypting Files Addressed to Your Public Key</h2>
+                    <h2 class="content-subhead"><b>Decrypting Files Addressed to Your Public Key</b></h2>
                     <p>
                     We can only decrypt files if they were encrypted with our Public Key.
                     And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
@@ -235,7 +235,7 @@ ryan@delta ~/example $ cat super_secret.txt
 I love pink poodles.</pre></code>
                     <p>As you can see, decrypting files is <em>incredibly easy</em>.</p>
 
-                    <h2 class="content-subhead">Wrapping It Up</h2>
+                    <h2 class="content-subhead"><b>Wrapping It Up</b></h2>
                     <p>
                     I hope you learned a lot from that huge dump of information. Now you should be perfectly
                     capable of encrypting files with Public Keys and sending them to their recipients. And, you
