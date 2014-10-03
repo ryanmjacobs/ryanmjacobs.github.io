@@ -7,4 +7,4 @@
                                                                         
     ga('create', 'UA-55354939-1', 'auto');                              
     ga('send', 'pageview');  
-}
+}(this, this.document));
