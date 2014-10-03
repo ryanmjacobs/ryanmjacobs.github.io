@@ -6,5 +6,6 @@
     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
                                                                         
     ga('create', 'UA-55354939-1', 'auto');                              
+    ga('require', 'displayfeatures');
     ga('send', 'pageview');  
 }(this, this.document));
