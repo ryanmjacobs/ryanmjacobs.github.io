@@ -1,0 +1,123 @@
+<!doctype html>
+<!-- Tutorials/The_Art_of_Shell_Scripting -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Home page for https://ryanmjacobs.github.io/">
+        <title>Ryan Jacobs</title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="../site_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="http://yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+    <body>
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
+
+                    <ul>
+                        <li><a href="../">Splash Page</a></li>
+                        <li><a href="../home">Home</a></li>
+                        <li><a href="../repositories">Repositories</a></li>
+                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
+                        <li><a href="../cheatsheets">Cheatsheets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>Ryan Jacobs</h1>
+                    <h2>Cool Guy Extraordinaire</h2>
+                </div>
+
+                <div class="content">
+                    <h1 class="content-subhead">The Art of Shell Scripting - October 03, 2014</h1>
+
+                    <h2 class="content-subhead"><b>What is a Shell Script?</b></h2>
+                    <p>dsfjhasjkdfhjaskdhf</p>
+
+                    <h2 class="content-subhead"><b>Let's Create One!</b></h2>
+                    <p>First let's create the file. The file extension is typically <code>.sh</code>,
+                    but as we all know, "<b>File extensions don't matter in Linux.</b>"</p>
+                    <pre><code class="bash">ryan@delta ~/example $ touch myScript.sh
+ryan@delta ~/example $ ls
+myScript.sh
+ryan@delta ~/example $ chmod +x myScript.sh 
+ryan@delta ~/example $ ls
+<span style="color:green">myScript.sh</span></pre></code>
+
+                    <p><b>Let's break it down:</b></p>
+                    <ul>
+                        <li> '<code class="big-code">touch myScript.sh</code>' creates the file. </li>
+                        <li> '<code class="big-code">chmod +x myScript.sh</code>' makes the file
+                                 executable, (we can now run it with <code>./myScript.sh</code>).</li>
+                    </ul>
+
+                    <h2 class="content-subhead"><b>Start it off with a bang!</b></h2>
+                    <p>Or more precisely, a <b>shebang</b>, also called a sha-bang,
+                    hashbang, or hash-exclam. It looks like this: <b>#!</b>.</p>
+                    <p>Each interpreted language has it's own shebang to identify the file.
+                    BASH scripts uses the following shebang, which is what we'll be using.</p>
+                    <pre><code class="bash">#!/bin/bash</pre></code>
+
+                    <h2 class="content-subhead"><b>Echo, Echo, Echo</b></h2>
+                    <p>Type this code into your script:</p>
+                    <pre><code class="bash">#!/bin/bash
+
+# This file echos out some random information.
+# Note: BASH interprets '#' signs as comments.
+
+# Begin the echo process :)
+echo "Initializing hardcore echo routines..."
+sleep 1
+echo "done!"
+
+# Echo out some cool numbers
+echo ""
+echo "Some cool numbers:"
+echo "    pi   -&gt; 3.14"
+echo "    life -> 42"
+
+# Quit
+echo ""
+echo "Quiting in 3..."
+sleep 1
+echo "Quiting in 2..."
+sleep 1
+echo "Quiting in 1..."
+sleep 1
+echo "Quiting NOW!"
+</pre></code>
+
+                    <p>Now run it! If all goes well, you should get something like this:</p>
+                    <pre><code class="bash">ryan@delta ~/example $ ./myScript.sh 
+Initializing hardcore echo routines...
+done!
+
+Some cool numbers:
+    pi   -&gt; 3.14
+    life -> 42
+
+Quiting in 3...
+Quiting in 2...
+Quiting in 1...
+Quiting NOW!
+</pre></code>
+
+                </div>
+            </div>
+        </div>
+
+        <script src="../ui.js"></script>
+        <script src="../myAnalytics.js"></script>
+
+    </body>
+</html>

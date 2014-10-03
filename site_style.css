@@ -15,7 +15,11 @@ code {
     font-family: monospace;
 }
 
-.big_list li {
+.big-code {
+    font-size: 17px;
+}
+
+.big-list li {
     font-size: 120%;
 }
 
