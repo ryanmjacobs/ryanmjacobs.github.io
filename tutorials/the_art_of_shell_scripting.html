@@ -114,6 +114,60 @@ Quiting in 2...
 Quiting in 1...
 Quiting NOW!
 </pre></code>
+                    <h1 class="content-subhead"><b>Variables</b></h1>
+                    <p>Variables are declared with an '<code>=</code>'.
+                       They are untyped. To reference one, use a '<code>$</code>'.
+                    </p>
+                    <pre><code class="bash">var1="Hello World"
+var2=42
+
+echo "$var1, I love the number $var2!"
+</pre></code>
+
+                    <h1 class="content-subhead"><b>Conditional Statements & Loops</b></h1>
+                    <p>Okay, now we're going to whip through BASH's conditional
+                       statements and loops.
+                    </p>
+
+                    <h2 class="content-subhead"><b>If/Else Statement</b></h2>
+                    <pre><code class="bash"># -eq, -ne, -gt, -lt, -ge, -le are for numbers
+if [ $num1 -eq $num2 ]; then
+    echo "num1 is equal to num2"
+elif [ $num1 -gt $num2 ]; then
+    echo "num1 is greater than num2"
+else
+    echo "num1 is not equal to num2"
+fi
+</pre></code>
+                    <pre><code class="bash"># ==, != are for strings
+if [ $str2 == $str2 ]; then
+    echo "str1 is equal to str2"
+fi
+</pre></code>
+
+                    <h2 class="content-subhead"><b>While Loop</b></h2>
+                    <pre><code class="bash">while true; do
+    echo "flood my terminal"
+done
+</pre></code>
+
+                    <pre><code class="bash">i=0
+while [ $i -lt 100 ]; do
+    let i++
+    echo $i
+done
+</pre></code>
+
+                    <h2 class="content-subhead"><b>For Loop</b></h2>
+                    <pre><code class="bash">for i in {0..100}; do
+    echo $i
+done
+</pre></code>
+                    <pre><code class="bash">array=('I' 'Am' 'An' 'Array')
+for word in ${array[@]}; do
+    echo $word
+done
+</pre></code>
 
                 </div>
             </div>
