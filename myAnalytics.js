@@ -7,5 +7,6 @@
                                                                         
     ga('create', 'UA-55354939-1', 'auto');                              
     ga('require', 'displayfeatures');
+    ga('require', 'linkid', 'linkid.js');
     ga('send', 'pageview');  
 }(this, this.document));
