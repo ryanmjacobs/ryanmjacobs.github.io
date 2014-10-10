@@ -11,8 +11,14 @@ a {
 }
 
 code {
-    font-size: 14px;
-    font-family: monospace;
+    font: 14px Monospace;
+}
+
+.inline-code {
+    margin: 0px 0px 0px 2em; /* indent left slightly */
+    padding: 0px;
+    font: 14px Monospace;
+    font-weight: bold;
 }
 
 .big_list li {
@@ -22,6 +28,14 @@ code {
 .pure-img-responsive {
     max-width: 100%;
     height: auto;
+}
+
+blockquote {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 3px solid #ccc;
 }
 
 /*

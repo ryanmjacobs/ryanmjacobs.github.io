@@ -1,0 +1,142 @@
+<!doctype html>
+<!-- Tutorials/Getting_Started_with_CoffeeScript -->
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Git in the right direction with these links and pointers.">
+        <meta name="author" content="Ryan Jacobs">
+        <title>Ryan Jacobs - Tutorials - Git and Github</title>
+        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
+        <link rel="stylesheet" href="../site_style.css">
+
+        <!-- highlight.js -->
+        <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
+        <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+</head>
+
+    <body>
+        <div id="layout">
+            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
+
+            <div id="menu">
+                <div class="pure-menu pure-menu-open">
+                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
+
+                    <ul>
+                        <li><a href="../">Splash Page</a></li>
+                        <li><a href="../home">Home</a></li>
+                        <li><a href="../repositories">Repositories</a></li>
+                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
+                        <li><a href="../cheatsheets">Cheatsheets</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="main">
+                <div class="header">
+                    <h1>Ryan Jacobs</h1>
+                    <h2>Cool Guy Extraordinaire</h2>
+                </div>
+
+                <div class="content">
+                    <h1 class="content-subhead">Getting Started with CoffeeScript - October 10, 2014</h1>
+
+                    <h2 class="content-subhead"><b>What is CoffeeScript?</b></h2>
+                    <p>Description straight from <a href="http://coffeescript.org/">coffeescript.org</a>,
+                    <blockquote>
+                    "<b>CoffeeScript is a little language that compiles into JavaScript.</b>
+                    Underneath that awkward Java-esque patina, JavaScript has always had a gorgeous heart.
+                    CoffeeScript is an attempt to expose the good parts of JavaScript in a simple way.
+                    <br><br>
+                    The golden rule of CoffeeScript is: "It's just JavaScript". The code compiles
+                    one-to-one into the equivalent JS, and there is no interpretation at runtime.
+                    You can use any existing JavaScript library seamlessly from CoffeeScript (and
+                    vice-versa). The compiled output is readable and pretty-printed, will work in every
+                    JavaScript runtime, and tends to run as fast or faster than the equivalent
+                    handwritten JavaScript."
+                    </blockquote></p>
+
+                    <h2 class="content-subhead"><b>Installing CoffeeScript</b></h2>
+                    <p>For the sake of this guide I am going to assume you are running a Debian or Ubuntu
+                    based operation system. If you're running anything else, you probably know what you're
+                    doing anyways.</p>
+                    <pre><code class="bash">sudo apt-get install nodejs nodejs-dev npm
+npm install -g coffee-script
+</pre></code>
+                    <h2 class="content-subhead"><b>Compiling CoffeeScript Code</b></h2>
+                    <p>Yay! Now we have the CoffeeScript compiler installed! Let's create some
+                    simple code and view it.</p>
+                    <ol class="list-with-commands">
+                        <li>Create two directories: '<code>coffeescripts</code>' and '<code>javascripts</code>'.
+                            <p class="inline-code">mkdir coffeescripts javascripts</p>
+                        </li>
+
+                        <li>Create the file '<code>HelloWorld.coffee</code>' in '<code>coffeescripts</code>'.
+                            <p class="inline-code">touch coffeescripts/HelloWorld.coffee</p>
+                        </li>
+
+                        <li>Tell the compiler to watch the directory and compile on every change.
+                            <p class="inline-code">coffee --output javascripts/ --watch --compile coffeescripts/</p>
+                        </li>
+                    </ol>
+                    <p>Leave that terminal running in the background.</p>
+                    <p>Paste this code into '<code>coffeescripts/HelloWorld.coffee</code>' and save it.</p>
+                    <pre><code class="coffeescript"># Yet Another CoffeeScript HelloWorld
+# By the way, '#' is a comment in CoffeeScript
+# Also, 'console.log' prints text
+
+## Define some functions ##
+square = (x) -> x * x
+cube   = (x) -> square(x) * x
+
+printSquare = (x) ->
+    mySquare = square(x)
+    console.log "The square of", x, "is", mySquare
+
+## Loop example ##
+for num in [1..5]
+    printSquare(num)
+
+console.log "" # sends a newline
+cubeMe = [ 123, 124, 125, 122, 121, 120 ]
+cubes  = (cube x for x in cubeMe)
+
+# Print first 5 cubes
+for c in [0..4]
+    console.log cubeMe[c] + "^3 ->", cubes[c]
+
+console.log ""
+console.log "Oh yeah, I forgot..."
+console.log "HELLO WORLD!"
+</pre></code>
+                    <h2 class="content-subhead"><b>Running It</b></h2>
+                    <p>Open another terminal and run this:
+                        <pre><code class="bash">node javascripts/HelloWorld.js</pre></code>
+                    </p>
+
+                    <h2 class="content-subhead"><b>Yay!</b></h2>
+                    <p>Yay, we did it! We compiled some CoffeeScript code and ran it!
+                       Well, that's the gist of it. To learn more about CoffeeScript, checkout the links
+                       below.
+                    </p>
+
+                    <h2 class="content-subhead"><b>Further Readings</b></h2>
+                    <p>If you are going to be using CoffeeScript in the near future,
+                    <a href="http://coffeescript.org/">coffeescript.org</a> is a must read.
+                    It walkthroughs every cool feature of CoffeeScript and <em>and</em> its
+                    JavaScript equivalent.
+                    </p>
+
+                    <p>If you want to learn CoffeeScript extensively, read this little e-book called
+                    <a href="http://arcturo.github.io/library/coffeescript/index.html">The Little Book of CoffeeScript</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <script src="../ui.js"></script>
+        <script src="../myAnalytics.js"></script>
+
+    </body>
+</html>
