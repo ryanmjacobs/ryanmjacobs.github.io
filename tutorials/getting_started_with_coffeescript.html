@@ -62,26 +62,19 @@
                     based operation system. If you're running anything else, you probably know what you're
                     doing anyways.</p>
                     <pre><code class="bash">sudo apt-get install nodejs nodejs-dev npm
-npm install -g coffee-script
+sudo npm install -g coffee-script
 </pre></code>
                     <h2 class="content-subhead"><b>Compiling CoffeeScript Code</b></h2>
                     <p>Yay! Now we have the CoffeeScript compiler installed! Let's create some
-                    simple code and view it.</p>
+                    simple code and run it.</p>
                     <ol class="list-with-commands">
-                        <li>Create two directories: '<code>coffeescripts</code>' and '<code>javascripts</code>'.
-                            <p class="inline-code">mkdir coffeescripts javascripts</p>
+                        <li>Create the file '<code>HelloWorld.coffee</code>'.
+                            <p class="inline-code">touch HelloWorld.coffee</p>
                         </li>
-
-                        <li>Create the file '<code>HelloWorld.coffee</code>' in '<code>coffeescripts</code>'.
-                            <p class="inline-code">touch coffeescripts/HelloWorld.coffee</p>
-                        </li>
-
-                        <li>Tell the compiler to watch the directory and compile on every change.
-                            <p class="inline-code">coffee --output javascripts/ --watch --compile coffeescripts/</p>
+                        <li>
+                            <p>Paste this code into '<code>HelloWorld.coffee</code>' and save it.</p>
                         </li>
                     </ol>
-                    <p>Leave that terminal running in the background.</p>
-                    <p>Paste this code into '<code>coffeescripts/HelloWorld.coffee</code>' and save it.</p>
                     <pre><code class="coffeescript"># Yet Another CoffeeScript HelloWorld
 # By the way, '#' is a comment in CoffeeScript
 # Also, 'console.log' prints text
@@ -111,8 +104,11 @@ console.log "Oh yeah, I forgot..."
 console.log "HELLO WORLD!"
 </pre></code>
                     <h2 class="content-subhead"><b>Running It</b></h2>
-                    <p>Open another terminal and run this:
-                        <pre><code class="bash">node javascripts/HelloWorld.js</pre></code>
+                    <p>Simply run the file with:
+                        <pre><code class="bash">coffee HelloWorld.coffee</pre></code>
+                    </p>
+                    <p>To compile the CoffeeScript files into a JavaScript file:
+                        <pre><code class="bash">coffee -c HelloWorld.coffee</pre></code>
                     </p>
 
                     <h2 class="content-subhead"><b>Yay!</b></h2>
