@@ -81,7 +81,7 @@ ls -lh *.jpg             # List all .jpg files
 
 cd [dir]                 # Change into directory
 cd ..                    # Go up a directory
-cd ../../                # Go up two directories
+cd ../..                 # Go up two directories
 cd /                     # Go to root directory
 
 pwd                      # Print working directory
@@ -97,8 +97,8 @@ wc -w &lt;file&gt;             # Count words in file
 wc -c &lt;file&gt;             # Count characters in file
 grep &lt;pattern&gt; &lt;file&gt;    # Search file for pattern
 
-head [-n lines] &lt;file&gt;   # Get <b>n</b> from the top of the file
-tail [-n lines] &lt;file&gt;   # Get <b>n</b> from the bottom of the file
+head [-n lines] &lt;file&gt;   # Get <b>n</b> lines from the top of the file
+tail [-n lines] &lt;file&gt;   # Get <b>n</b> lines from the bottom of the file
 
 rm     &lt;file&gt;            # Remove file
 rm -r  &lt;folder&gt;          # Remove recursively
@@ -146,12 +146,18 @@ echo {word1,word2,word3}       # Expands to "word1 word2 word3"
 mkdir {A..Z}                   # Creates 26 directories named A thru Z
 touch File_{A..C}              # Creates files: File_A, File_B, and File_C
 touch main.{c,h}               # Creates files: main.c and main.h</pre></code>
-                    <pre><code class="bash">## Wildcards! ##
-# '*' is the Star Wildcard. It represents anything.
 
-ryan@delta ~ $ ls *.jpg  # List all files with the .jpg extension
-ryan@delta ~ $ rm *.jpg  # Remove all .jpg files
-ryan@delta ~ $ rm *      # REMOVE EVERYTHING!!!</pre></code>
+                    <h2 class="content-subhead"><b>BASH Wildcards</b></h2>
+                    <p>
+                    <b style="font-size: 125%">*</b> is the Star Wildcard. It represents anything. <b>Hello*.txt</b> would satisfy 'HelloWorld.txt', 'Hellooo.txt', etc.<br>
+                        <b style="font-size: 115%">?</b> Represents a single character. <b>R?an</b> would satisfy 'Ryan', 'Raan', 'Rban', etc.
+                    </p>
+                    <pre><code class="bash">## Wildcards! ##
+
+ls *.jpg                       # List all files with the .jpg extension
+rm *.jpg                       # Remove all .jpg files
+rm ??.txt                      # Remove all text files that have two character names.
+rm *                           # REMOVE EVERYTHING!!!</pre></code>
 
                     <h2 class="content-subhead"><b>Semi-colon, &&, and ||</b></h2>
                     <pre><code class="bash">## Semi-colon Operator ##
