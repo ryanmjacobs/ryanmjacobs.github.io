@@ -1,0 +1,26 @@
+/**
+ * Style for my portfolio.
+ * Author: Ryan Jacobs <ryan.mjacobs@gmail.com>
+ */
+
+@import "style.scss";
+
+.photo {
+    margin: 10px auto 10px;
+}
+
+// three main sections
+.about, .work, .contact {
+    @extend .section;
+}
+.work    p { text-align: center; }
+.contact p { text-align: center; margin: 10px; }
+
+.skills-graph {
+    margin: 10px auto;
+    h1 {
+        font-size: 16px;
+        font-weight: normal;
+    }
+    width: ($page-width);
+}

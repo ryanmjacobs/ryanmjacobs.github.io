@@ -3,36 +3,41 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Good job! You managed to find my 404 page. Now go home. Skedaddle. Get out of here. Leave!">
+        <meta name="description" content="Good job! You managed to find my 404 page.">
         <meta name="author" content="Ryan Jacobs">
-        <title>Ryan Jacobs - 404</title>
+        <title>Page not found.</title>
+        <link rel="stylesheet" href="css/portfolio.css">
 
-        <link href='//fonts.googleapis.com/css?family=Rock+Salt' rel='stylesheet' type='text/css'>
-        <style type="text/css">
-            h1, h2, h3 {
-                font-family: 'Rock Salt', cursive, monospace;
-                letter-spacing: 2px;
-                margin:  0px;
+        <style>
+            body {
+                overflow: hidden;
+            }
+
+            h2 {
+                margin: 0px;
                 padding: 0px;
-            }
+                line-height: 1em;
 
-            a {
-                color: hsl(232, 64%, 50%);
-                text-decoration: none;
+                font-size: 192px;
+                font-weight: normal;
             }
-
-            a:hover { color: hsl(232, 64%, 35%); }
-            h1 { font-size: 108px; margin-bottom: -48px; }
-            h2 { font-size: 72px;  margin-bottom: 24px; }
-            h3 { font-size: 54px; }
-            html   { text-align: center; background-color: hsl(42, 21%, 85%); }
         </style>
     </head>
 
     <body>
-        <h1>Oh noes!</h1>
-        <h2>We gotta 404!</h2>
-        <h3><a href="//ryanmjacobs.github.io/home">Take me home!</a></h3>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
+            </div>
+        </div>
+
+        <h2>404.</h2>
 
         <script src="myAnalytics.js"></script>
     </body>

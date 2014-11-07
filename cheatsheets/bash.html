@@ -6,48 +6,39 @@
         <meta name="description" content="Everything you need to know about BASH, all in one place too!">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Cheatsheets - BASH</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
         <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
-</head>
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li><a href="../tutorials">Tutorials</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/tutorials">Tutorials</a>
+                    <a class="current-link" href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>BASH Cheatsheet</span></a></h1>
+            </div>
 
-                <div class="content">
-                    <h1 class="content-subhead">Bash Cheatsheet</h1>
-                    <h2 class="content-subhead"><b>Bourne-Again Shell</b></h2>
+            <p>If you run into any problems, check out the
+            <a href="#troubleshooting">Troubleshooting</a> section.</p>
 
-                    <p>If you run into any problems, check out the
-                    <a href="#troubleshooting">Troubleshooting</a> section.</p>
+            <div id="the-one-command-that-everyone-should-know" class="section">
+                <h2><a id="the-one-command-that-everyone-should-know" href="#the-one-command-that-everyone-should-know">
+                    <span>The One Command That Everyone Should Know</span></a>
+                </h2>
 
-                    <h2 class="content-subhead"><b>The One Command That Everyone Should Know</b></h4>
-                    <pre><code class="bash"># The One Command That Everyone Should Know... is 'man'.
+                <pre><code class="bash"># The One Command That Everyone Should Know... is 'man'.
 # Every command has a manpage.
 # Want to know a command's purpose and/or usage? Read it's manpage!
 
@@ -60,18 +51,23 @@ bzip2 (1)            - a block-sorting file compressor, v1.0.6
 gzip (1)             - compress or expand files
 zip (1)              - package and compress (archive) files
 </pre></code>
-                    <h2 class="content-subhead"><b>Command Synopsis</b></h2>
-                    <p>A command synopsis tells you how to use a command. It looks like this:
-                    <pre><code class="bash"># command &lt;mandatory&gt; [optional]</pre></code>
-                    <p>The synopsis for the echo command (straight from the man page):</p>
-                    <pre><code class="bash"># echo [SHORT-OPTION]... [STRING]...</pre></code>
-                    <p>The '<code>...</code>' means that you can repeat that part.
-                    Now we can see that the <code>echo</code> command takes
-                    multiple & optional short options and also multiple & optional
-                    strings.
+            </div>
+            <div id="command-synopsis" class="section">
+                <h2><a href="#command-synopsis"><span>Command Synopsis</span></a></h2>
 
-                    <h2 class="content-subhead"><b>Common Commands</b></h2>
-                    <pre><code class="bash">## Navigation ##
+                <p>A command synopsis tells you how to use a command. It looks like this:
+                <pre><code class="bash"># command &lt;mandatory&gt; [optional]</pre></code>
+                <p>The synopsis for the echo command (straight from the man page):</p>
+                <pre><code class="bash"># echo [SHORT-OPTION]... [STRING]...</pre></code>
+                <p>The '<code>...</code>' means that you can repeat that part.
+                Now we can see that the <code>echo</code> command takes
+                multiple & optional short options and also multiple & optional
+                strings.
+            </div>
+
+            <div id="common-commands" class="section">
+                <h2><a href="#common-commands"><span>Common Commands</span></a></h2>
+                <pre><code class="bash">## Navigation ##
 ls [dir]                 # List directory contents
 ls -a                    # List all contents, i.e. hidden files
 ls -l                    # Long listing
@@ -87,7 +83,7 @@ cd /                     # Go to root directory
 pwd                      # Print working directory
 du -sh                   # Show directory's disk usage</pre></code>
 
-<pre><code class="bash">## File Manipulation ##
+                <pre><code class="bash">## File Manipulation ##
 touch &lt;file&gt;             # Create file
 mkdir &lt;dirname&gt;          # Make a directory
 
@@ -111,7 +107,7 @@ mv &lt;src&gt; &lt;dest&gt;          # Move a file
 ln    &lt;file&gt; &lt;link&gt;      # Create a hardlink
 ln -s &lt;file&gt; &lt;link&gt;      # Create a symlink</pre></code>
 
-<pre><code class="bash">## Information & Administration ##
+                <pre><code class="bash">## Information & Administration ##
 date                     # Show date and time
 w                        # Show who is logged in and what they are doing
 top                      # Dynamic process list; (q to quit, h for help, k to kill process)
@@ -120,12 +116,14 @@ kill    &lt;pid&gt;            # Kill a process based on PID (Process ID)
 kill -9 &lt;pid&gt;            # Force kill PID
 killall &lt;process_name&gt;   # Kill a process based on name</pre></code>
 
-<pre><code class="bash">## Other ##
+                <pre><code class="bash">## Other ##
 echo  &lt;string&gt;           # Output a string
 sleep &lt;seconds&gt;          # Pause for <b>n</b> seconds</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Terminal Shortcuts</b></h2>
-                    <pre><code class="bash">## Terminal Shortcuts ##
+            <div id="terminal-shortcuts" class="section">
+                <h2><a href="#terminal-shortcuts"><span>Terminal Shortcuts</span></a></h2>
+                <pre><code class="bash">## Terminal Shortcuts ##
 Ctrl+C                   # Kill current process
 Ctrl+L                   # Clear terminal
 Ctrl+A                   # Move cursor to beginning of prompt
@@ -134,9 +132,11 @@ Ctrl+Shift+C             # Copy terminal selection to clipboard
 Ctrl+Shift+V             # Paste clipboard into terminal
 Shift + Page Up/Down     # Scroll up/down the terminal
 </pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>BASH Expansion</b></h2>
-                    <pre><code class="bash">## Braces! ##
+            <div id="bash-expansion" class="section">
+                <h2><a href="#bash-expansion"><span>BASH Expansion</span></a></h2>
+                <pre><code class="bash">## Braces! ##
 echo {1,2,3}                   # Expands to "1 2 3"
 echo {1..5}                    # Expands to "1 2 3 4 5"
 echo {01..05}                  # Expands to "01 02 03 04 05"
@@ -146,28 +146,31 @@ echo {word1,word2,word3}       # Expands to "word1 word2 word3"
 mkdir {A..Z}                   # Creates 26 directories named A thru Z
 touch File_{A..C}              # Creates files: File_A, File_B, and File_C
 touch main.{c,h}               # Creates files: main.c and main.h</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>BASH Wildcards</b></h2>
-                    <p>
-                    <b style="font-size: 125%">*</b> is the Star Wildcard. It represents anything. <b>Hello*.txt</b> would satisfy 'HelloWorld.txt', 'Hellooo.txt', etc.<br>
-                        <b style="font-size: 115%">?</b> Represents a single character. <b>R?an</b> would satisfy 'Ryan', 'Raan', 'Rban', etc.
-                    </p>
-                    <pre><code class="bash">## Wildcards! ##
-
+            <div id="bash-wildcards" class="section">
+                <h2><a href="#bash-wildcards"><span>BASH Wildcards</span></a></h2>
+                <p>
+                <b style="font-size: 125%">*</b> represents anything. <b>Hello*.txt</b> would satisfy 'HelloWorld.txt', 'Hellooo.txt', etc.<br>
+                <b style="font-size: 115%">?</b> represents a single character. <b>R?an</b> would satisfy 'Ryan', 'Raan', 'Rban', etc.
+                </p>
+                <pre><code class="bash">## Wildcards! ##
 ls *.jpg                       # List all files with the .jpg extension
 rm *.jpg                       # Remove all .jpg files
 rm ??.txt                      # Remove all text files that have two character names.
 rm *                           # REMOVE EVERYTHING!!!</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Semi-colon, &&, and ||</b></h2>
-                    <pre><code class="bash">## Semi-colon Operator ##
+            <div id="semi-colon" class="section">
+                <h2><a href="#semi-colon"><span>Semi-colon, &&, and ||</span></a></h2>
+                <pre><code class="bash">## Semi-colon Operator ##
 #  means 'do that after this'
 ryan@delta ~ $ echo hello; echo world
 hello
 world
 </pre></code>
 
-                    <pre><code class="bash">## && Operator ##
+                <pre><code class="bash">## && Operator ##
 #  means 'only if successful, do that after this'
 ryan@delta ~ $ echo hello && echo world
 hello
@@ -177,13 +180,13 @@ ryan@delta ~ $ Fake_Command && echo world
 bash: Fake_Command: command not found
 </pre></code>
 
-                    <pre><code class="bash">## || Operator ##
+                <pre><code class="bash">## || Operator ##
 #  means 'only if failure, do that after this'
 ryan@delta ~ $ Fake_Command || echo "Failure!"
 bash: Fake_Command: command not found
 Failure!
 </pre></code>
-                    <pre><code class="bash">## Mixing semi-colon, &&, and || ##
+                <pre><code class="bash">## Mixing semi-colon, &&, and || ##
 ryan@delta ~ $ touch MyFile
 ryan@delta ~ $ echo "Removing..."; rm MyFile && echo "Yay!" || echo "Boo!"; echo "Done."
 Removing...
@@ -197,8 +200,9 @@ Boo!
 Done.
 </pre></code>
 
-                    <h2 class="content-subhead"><b>BASH Job Control</b></h2>
-                    <pre><code class="bash">## BASH Job Control ##
+            <div id="bash-job-control" class="section">
+                <h2><a href="#bash-job-control"><span>BASH Job Control</span></a></h2>
+                <pre><code class="bash">## BASH Job Control ##
 &lt;command&gt; &              # Run a command in the background
 &lt;command&gt; &>/dev/null    # Suppress a command's output
 &lt;command&gt; &>/dev/null &  # Suppress a command's output <em>and</em> run it in the background
@@ -207,14 +211,18 @@ Ctrl-Z                   # Stop current process
 fg                       # Put stopped process in foreground
 bg                       # Put stopped process in background
 jobs                     # List current running jobs</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Permissions</b></h2>
-                    <pre><code class="bash">## File Permissions ##
+            <div id="permissions" class="section">
+                <h2><a href="#permissions"><span>Permissions</span></a></h2>
+                <pre><code class="bash">## File Permissions ##
 chmod +x &lt;file&gt;          # Make file executable
 chmod -x &lt;file&gt;          # Make file not executable</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Basic Stream Redirection</b></h2>
-                    <pre><code class="bash">#############################
+            <div id="basic-stream-redirection" class="section">
+                <h2><a href="#basic-stream-redirection"><span>Basic Stream Redirection</span></a></h2>
+                <pre><code class="bash">#############################
 ##         Piping          ##
 #############################
 # Piping is taking the output of one command and using as the input to another.
@@ -224,7 +232,7 @@ ryan@delta ~ $ ls
 ryan@delta ~ $ ls -1 | wc -l
 10</pre></code>
 
-<pre><code class="bash">#############################
+                <pre><code class="bash">#############################
 ##  Redirection to a File  ##
 #############################
 #  Use the '>' operator to save the output of a command to a file.
@@ -240,13 +248,14 @@ ryan@delta ~/example $ echo "I am on line two!" >> file
 ryan@delta ~/example $ cat file
 Hello world!
 I am on line two!</pre></code>
+            </div>
 
-                    <div id="troubleshooting">
-                        <h2 class="content-subhead"><b>Troubleshooting</b></h2>
-                        <h3 class="content-subhead"><b>I can't do anything with spaces!</b></h3>
-                        <p>This is because of how BASH handles strings. BASH strings must be
-                        single-quoted, double-quoted, or space-escaped.<br>An Example:</p>
-                        <pre><code class="bash"># Let's create a file called: Hello World.txt
+            <div id="troubleshooting" class="section">
+                <h2><a href="#troubleshooting"><span>Troubleshooting</span></a></h2>
+                <h3><b>I can't do anything with spaces!</b></h3>
+                <p>This is because of how BASH handles strings. BASH strings must be
+                single-quoted, double-quoted, or space-escaped.<br>An Example:</p>
+                <pre><code class="bash"># Let's create a file called: Hello World.txt
 ryan@delta ~ $ touch Hello World.txt
 
 # Uh oh, BASH interpreted our filename as two separate strings
@@ -272,11 +281,11 @@ ryan@delta ~ $ ls -l
 # Oh boy! They all work!
 </pre></code>
 
-                        <h3 class="content-subhead"><b>I can't use exclamation marks!</b></h3>
-                        <p>Certain symbols have specific meanings in BASH. Such as the semi-colon, &&,
-                        ||, or exclamation mark. Single-quotes tell BASH to interpret the string
-                        literally.</p>
-                        <pre><code class="bash"># Exclamation mark in double quotes. Boo, it fails.
+                <h3><b>I can't use exclamation marks!</b></h3>
+                <p>Certain symbols have specific meanings in BASH. Such as the semi-colon, &&,
+                ||, or exclamation mark. Single-quotes tell BASH to interpret the string
+                literally.</p>
+                <pre><code class="bash"># Exclamation mark in double quotes. Boo, it fails.
 ryan@delta ~ $ echo "I! AM! A!WEIRD!STRING!"
 bash: !WEIRD!STRING!: event not found
 
@@ -284,13 +293,13 @@ bash: !WEIRD!STRING!: event not found
 ryan@delta ~ $ echo 'I! AM! A!WEIRD!STRING'
 I! AM! A!WEIRD!STRING
 </pre></code>
-                    </div>
-                </div>
             </div>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

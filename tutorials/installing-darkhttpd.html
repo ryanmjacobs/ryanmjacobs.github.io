@@ -6,88 +6,81 @@
         <meta name="description" content="A how to guide on packaging the Linux program darkhttpd for various systems and distros.">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Tutorials - Installing darkhttpd</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
         <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
-</head>
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
-                        <li><a href="../cheatsheets">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a class="current-link" href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>Installing darkhttpd</span></a></h1>
+            </div>
 
-                <div class="content">
-                    <h1 class="content-subhead">Installing darkhttpd - October 09, 2014</h1>
-                    <h3 class="content-subhead"><b>"When you need a web server in a hurry."</b></h3>
+            <div class="section">
+                <p><b>darkhttpd</b> is a great, lightweight web server by Emil Mikulic. However, many Linux distros
+                don't offer a package for it. This guide will go through all of the steps of
+                obtaining and installing this amazing program.</p>
+            </div>
 
-                    <p><b>darkhttpd</b> is a great, lightweight web server by Emil Mikulic. However, many Linux distros
-                    don't offer a package for it. This guide will go through all of the steps of
-                    obtaining and installing this amazing program.</p>
+            <div id="debian-ubuntu" class="section">
+                <h2><a href="#debian-ubuntu"><span>Debian/Ubuntu</span></a></h2>
 
-                    <h2 class="content-subhead"><b>Debian/Ubuntu</b></h2>
-                    <pre><code class="bash"># Download and install build tools, (if you don't already have them)
+                <pre><code class="bash"># Download and install build tools, (if you don't already have them)
 sudo apt-get update
 sudo apt-get install build-essential</pre></code>
-                    <pre><code class="bash"># Clone repository, generate debian package, and install!
+                <pre><code class="bash"># Clone repository, generate debian package, and install!
 git clone https://github.com/ryanmjacobs/darkhttpd # clone the repository
 cd darkhttpd                                       # go into repository
 make debian                                        # generate debian package
 sudo dpkg -i darkhttpd.deb                         # install debian package
 </pre></code>
+            </div>
 
-                    <h1 class="content-subhead"><b>Invocation & Usage</b></h1>
-                    <p>To start the web server, go to the directory that contains all of
-                    you web files, (.html, .cs, .js, etc.) and run '<b>darkhttpd .</b>'.
-                    Notice that's '<b>darkhttpd DOT</b>', but with a real dot.
-                    In BASH, the dot represents your current directory. Navigate your browser
-                    to <b>localhost:8080</b> to see what's being hosted.</p>
-                    <pre><code class="bash">ryan@delta ~ $ cd working/GitHub/site/
+            <div id="invocation-and-usage" class="section">
+                <h2><a href="#invocation-and-usage"><span>Invocation & Usage</span></a></h2>
+
+                <p>To start the web server, go to the directory that contains all of
+                you web files, (.html, .cs, .js, etc.) and run '<b>darkhttpd .</b>'.
+                Notice that's '<b>darkhttpd DOT</b>', but with a real dot.
+                In BASH, the dot represents your current directory. Navigate your browser
+                to <b>localhost:8080</b> to see what's being hosted.</p>
+                <pre><code class="bash">ryan@delta ~ $ cd working/GitHub/site/
 ryan@delta ~/working/GitHub/site $ darkhttpd .
 darkhttpd/1.10, copyright (c) 2003-2014 Emil Mikulic.
 listening on: http://0.0.0.0:8080/
 ^C^C^C
-ryan@delta ~/working/GitHub/site $ 
-</pre></code>
+ryan@delta ~/working/GitHub/site $</pre></code>
+            </div>
 
-                    <h1 class="content-subhead"><b>BEST EXAMPLE EVER!</b></h1>
-                    <p>What better better way to demonstrate the usage of <b>darkhttpd</b>
-                       than to use it to host the website you are currently viewing?
-                       In fact, I do it all the time before I push changes to the site!
-                    </p>
-                    <pre><code class="bash">git clone https://github.com/ryanmjacobs/ryanmjacobs.github.io
-darkhttpd ryanmjacobs.github.io --port 1234</pre></code>
-                    <p>Now point your browser to <b>localhost:1234</b>! And, browse
-                    my site locally! No internet connection required <b>:</b>D</p>
+            <div id="a-great-example" class="section">
+                <h2><a href="#a-great-example"><span>A Great Example</span></a></h2>
 
-                </div>
+                <p>Here we'll clone <a href="//example.org">example.org</a> and serve it locally.</p>
+                <pre><code class="bash">wget -mpk http://example.org
+darkhttpd example.org --port 1234</pre></code>
+                <p>Now point your browser to <b>localhost:1234</b>, and browse the
+                <em>expansive</em> site of <a href="//example.org">example.org</a>.</p>
             </div>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

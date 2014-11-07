@@ -1,26 +1,108 @@
 <!doctype html>
-<!-- Splash Page -->
+<!-- Portfolio Page-->
+
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="description" content="Welcome! P.S. My site has Linux and programming stuff if your interested in that kind of thing.">
+        <meta name="description" content="Portfolio page for Ryan Jacobs. Sections: About, Work, and Contact.">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="splash-page.css">
+        <link rel="stylesheet" href="css/portfolio.css">
+        <link rel="shortcut icon" href="headshot.png">
     </head>
-
+    
     <body>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a class="current-link" href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
+            </div>
 
-        <div class="splash-container">
-            <div class="splash">
-                <h1 class="splash-head">Ryan Jacobs</h1>
-                <p class="splash-subhead">What a cool guy...</p>
-                <p><a href="home/" class="pure-button pure-button-primary">Take me to some stuff</a></p>
+            <div class="photo">
+                <img id="headshot" class="photo" src="headshot.png" alt="Black & White Photo of Ryan" width="200px" draggable="false">
+            </div>
+
+            <div id="about" class="about">
+                <h1><a href="#about"><span>About</span></a></h1>
+                <p>
+                    Hi there. My name is Ryan Jacobs and I make stuff.
+                    <br><br>
+
+                    I love computer programming, whether it's working with
+                    low-level embedded electronics or high-level software development.
+                    When I'm not programming, I'm often tinkering
+                    with the latest and greatest graphic design tools, trying
+                    to create something worthwhile.
+                    <br><br>
+
+                    I am a strong advocate for open source and am an active
+                    participant in its development too. I despise developing on
+                    Windows with a fiery passion; Linux is the only way to go in my book.
+                    I'm also quite adamant on my stance in the editor war: Vim + 4-space
+                    indentation. My
+                    <a href="//github.com/ryanmjacobs/ryans_dotfiles/">dotfiles</a>
+                    can sometimes be the bane of my
+                    productivity; I'm always adjusting them for the perfect setup.
+                    <br><br>
+
+                    I love design, especially web-related. Time and time again,
+                    I find myself browsing the source of interesting websites
+                    to glean on their inner workings. I'm also a fan of minimal,
+                    clean design and am fascinated with
+                    <a id="typography-link">typography</a>.
+                    I pine for a clean, responsive, and interactive web and enjoy
+                    learning how to do it myself.
+                    <br><br>
+
+                    Another passion of mine is film and Visual Effects. I'm not the
+                    best at it so it's just a hobby for now. But every now and
+                    then, I enjoy producing a small sketch or idea just for kicks.
+                </p>
+                </div>
+            </div>
+
+            <div id="work" class="work">
+                <h1><a href="#work"><span>Work</span></a></h1>
+                <p>
+                    Most of my code is open source and you can browse it on my
+                    <a href="//github.com/ryanmjacobs">GitHub</a>.<br>
+                </p>
+
+                <div class="skills-graph">
+                    <h1>Rankings of my skills from 1 to 10, (with 1 being a novice and 10 being a master).</h1>
+                    <canvas id="skills-graph"></canvas>
+                </div>
+            </div>
+
+            <div id="contact" class="contact">
+                <h1><a href="#contact"><span>Contact</span></a></h1>
+                <p>If you <b>*ever*</b> want to make some cool stuff, send me an email!<p>
+                <p>ryan.mjacobs@gmail.com</p>
             </div>
         </div>
 
-        <script src="../myAnalytics.js"></script>
+        <script src="js/change-face.js"></script>
 
+        <script src="js/lib/Chart.min.js"></script>
+        <script src="js/skills-graph.js"></script>
+
+        <script src="js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <div style="padding-top: 2em;">
+            <a href="#about">About</a> /
+            <a href="#work">Work</a> /
+            <a href="#contact">Contact</a><br>
+        </div>
+
+        <div style="padding-bottom: 0.5em;">
+            <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+        </div>
+    </footer>
 </html>

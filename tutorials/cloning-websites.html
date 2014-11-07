@@ -6,79 +6,73 @@
         <meta name="description" content="How to clone a website locally with the Linux wget command.">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Tutorials - Cloning Websites</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
         <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
-</head>
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
-                        <li><a href="../cheatsheets">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a class="current-link" href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>Cloning Websites</span></a></h1>
+            </div>
 
-                <div class="content">
-                    <h1 class="content-subhead">Cloning Websites - October 13, 2014</h1>
+            <div id="how-to-do-it" class="section">
+                <h2><a href="#how-to-do-it"><span>How to Do It</span></a></h2>
 
-                    <h2 class="content-subhead"><b>How to Do It</b></h2>
-                    <pre><code class="bash">wget -mpk http://ryanmjacobs.github.io/</pre></code>
-                    <p>That commmand right there will clone my website locally. Now to view it, all you
-                    have to do is open <code>./ryanmjacobs.github.io/index.html in your browser</code>.
-                    Typically you can just run:</p>
-                    <pre><code class="bash">google-chrome ryanmjacobs.github.io/index.html</pre></code>
-                    <p>or if you're on Firefox</p>
-                    <pre><code class="bash">firefox ryanmjacobs.github.io/index.html</pre></code>
-                    <p>or if you're on some other obscure browser just point it to the location of the file.</p>
+                <pre><code class="bash">wget -mpk http://ryanmjacobs.github.io/</pre></code>
+                <p>That commmand right there will clone my website locally. Now to view it, all you
+                have to do is open <code class="inline-code">./ryanmjacobs.github.io/index.html</code> in your browser.
+                Typically you can just run:</p>
+                <pre><code class="bash">google-chrome ryanmjacobs.github.io/index.html</pre></code>
+                <p>or if you're on Firefox</p>
+                <pre><code class="bash">firefox ryanmjacobs.github.io/index.html</pre></code>
+                <p>or if you're on some other obscure browser just point it to the location of the file.</p>
+            </div>
 
-                    <h2 class="content-subhead"><b>Another Example</b></h2>
-                    <p>This will clone the contents of <code>example.org</code>.</p>
-                    <pre><code class="bash">wget -mpk http://example.org</pre></code>
+            <div id="another-example" class="section">
+                <h2><a href="#another-example"><span>Another Example</span></a></h2>
 
-                    <div class="pure-u-1 pure-u-lg-1-3">
-                        <h2 class="content-subhead"><b>Options Breakdown</b></h2>
-                        <table class="pure-table pure-table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Option</th>
-                                    <th>Purpose</th>
-                                </tr>
-                            </thead>
+                <p>This will clone the contents of <a href="//example.org">example.org</a>.</p>
+                <pre><code class="bash">wget -mpk http://example.org</pre></code>
 
-                            <tbody>
-                                <tr> <td><b>-m, --mirror</b></td>  <td>turn on options suitable for mirroring</td> </tr>
-                                <tr> <td><b>-p</b></td>            <td>download all files necessary to display page, e.g. CSS, images, etc.</td> </tr>
-                                <tr> <td><b>-k, --convert</b></td> <td>convert links to reference the local copies, not the online versions</td> </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="pure-u-1 pure-u-lg-1-3">
+                    <h3><b>Options Breakdown</b></h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr> <td><b>-m, --mirror</b></td>  <td>turn on options suitable for mirroring</td> </tr>
+                            <tr> <td><b>-p</b></td>            <td>download all files necessary to display page, e.g. CSS, images, etc.</td> </tr>
+                            <tr> <td><b>-k, --convert</b></td> <td>convert links to reference the local copies, not the online versions</td> </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

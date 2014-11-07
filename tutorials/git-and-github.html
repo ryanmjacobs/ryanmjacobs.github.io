@@ -6,65 +6,42 @@
         <meta name="description" content="Git in the right direction with these links and pointers.">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Tutorials - Git and Github</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
-
-        <!-- highlight.js -->
-        <!-- Don't need it for this page
-        <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
-        <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-        -->
-</head>
+        <link rel="stylesheet" href="../css/style.css">
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
-                        <li><a href="../cheatsheets">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a class="current-link" href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
-
-                <div class="content">
-                    <h1 class="content-subhead">Git & GitHub - October 03, 2014</h1>
-
-                    <p>This page isn't much of a tutorial per se, but instead a resource to
-                       other guides around the web.</p>
-
-                    <h2 class="content-subhead"><b>Links Away!</b></h2>
-                    <ul class="big_list">
-                        <li> <a href="//rogerdudler.github.io/git-guide/">git - the simple guide</a> by Roger Dudler</li>
-                    </ul>
-
-                    <h2 class="content-subhead"><b>Hosted by GitHub Themselves:</b></h2>
-                    <ul class="big_list">
-                        <li> <a href="//guides.github.com/">All GitHub Guides</a></li>
-                        <li> <a href="//guides.github.com/introduction/flow/">Understanding the GitHub Flow</a></li>
-                        <li> <a href="//help.github.com/articles/creating-a-pull-request/">Creating a Pull Request</a></li>
-                    </ul>
-
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>Git & GitHub</span></a></h1>
             </div>
+
+            <div class="section">
+                <p>This page isn't much of a tutorial per se, but instead a resource to
+                   other guides around the web.</p>
+            </div>
+
+            <ul class="link-dump">
+                <li> <a href="//rogerdudler.github.io/git-guide/">Git - the simple guide</a></li>
+                <li> <a href="//guides.github.com/introduction/flow/">Understanding the GitHub Flow</a></li>
+                <li> <a href="//help.github.com/articles/creating-a-pull-request/">Creating a Pull Request</a></li>
+                <li> <a href="//guides.github.com/">GitHub Guides</a></li>
+            </ul>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

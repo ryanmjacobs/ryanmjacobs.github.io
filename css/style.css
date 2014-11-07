@@ -1,0 +1,141 @@
+/**
+ * General styling for my site.
+ * Author: Ryan Jacobs <ryan.mjacobs@gmail.com>
+ */
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700);
+html {
+  font-family: "Crimson Text", Palatino, Georgia, serif;
+  color: #343434;
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin: 0px 0px 35px; }
+
+h1, h2, h3, h4, h5, h6, footer {
+  text-align: center; }
+
+a {
+  color: #343434;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 250ms ease-in; }
+  a:hover {
+    color: #e60000; }
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+table {
+  margin-bottom: 25px; }
+  table, table th, table td {
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse; }
+
+.container {
+  width: 700px;
+  margin: 0 auto;
+  padding: 0px 25px 0px; }
+
+/* Modify page width for smaller screens */
+@media screen and (max-width: 750px) {
+  .container {
+    width: auto; } }
+.header-and-nav {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 0.75em;
+  margin-bottom: 1.5em; }
+  .header-and-nav h1 {
+    margin: 0px;
+    font-size: 48px;
+    font-weight: normal; }
+  .header-and-nav h2 {
+    margin-top: 1.5em;
+    font-size: 32px;
+    font-weight: 300; }
+  .header-and-nav hr {
+    width: 50%; }
+  .header-and-nav h1 a:link {
+    border: none; }
+  .header-and-nav h1 a:hover {
+    border: none; }
+  .header-and-nav a {
+    color: #343434;
+    font-size: inherit;
+    margin: 0px 10px 0px;
+    text-decoration: none;
+    transition: border .25s ease-in-out;
+    border-bottom: 2px solid white; }
+    .header-and-nav a:hover {
+      border-bottom: 2px solid #ff7070; }
+  .header-and-nav .current-link {
+    border-bottom: 2px solid lightgray; }
+
+/**
+ * LINK DUMPS (for projects, tutorials, cheatsheets, etc)
+ */
+.link-dump ul, .link-dump li {
+  list-style: none;
+  margin-left: 0px;
+  padding-left: 0px;
+  text-indent: -1em;
+  font-size: 2em; }
+
+/**
+ * TEXT SECTIONS
+ */
+.section {
+  margin: 0px 0px 5px;
+  padding: 0px;
+  /* Title of each section */
+  /* text area */
+  /* inline code, e.g. "run this: <code>echo hi</code>" */ }
+  .section h1, .section h2 {
+    margin: 0px; }
+    .section h1 a, .section h2 a {
+      color: #343434;
+      text-decoration: none; }
+      .section h1 a span, .section h2 a span {
+        display: inline-block;
+        font-size: inherit;
+        height: 1.4em;
+        transition: border .25s ease-in-out;
+        border-bottom: 2px solid white; }
+        .section h1 a span:hover, .section h2 a span:hover {
+          border-bottom: 2px solid #ff7070; }
+  .section p {
+    margin-top: 0px;
+    font-size: 19px;
+    line-height: 1.1em; }
+  .section .inline-code {
+    font: 14px monospace; }
+
+footer {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 35px;
+  width: 100%; }
+  footer a, footer p {
+    color: #2a2a2a;
+    font-size: 18px; }
+  footer a {
+    margin: 0px 0.75em;
+    text-decoration: none;
+    transition: border 150ms ease-in;
+    border-bottom: 1px solid white; }
+    footer a:hover {
+      color: #343434;
+      border-bottom: 1px solid gray; }
+  footer .copyright {
+    margin: 0px;
+    font-size: 16px;
+    text-align: center; }
+    footer .copyright a {
+      margin: 0px; }
+
+/*# sourceMappingURL=style.css.map */

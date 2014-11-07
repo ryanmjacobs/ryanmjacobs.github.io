@@ -6,78 +6,74 @@
         <meta name="description" content="GPG Tutorial - Part 1. Add GPG to your encryption arsenal in this fun tutorial!">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Tutorials - GPG Part 1</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
         <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
-</head>
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Tutorials</a></li>
-                        <li><a href="../cheatsheets">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a class="current-link" href="/tutorials">Tutorials</a>
+                    <a href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>GPG Part 1</span></a></h1>
+            </div>
 
-                <div class="content">
-                    <h1 class="content-subhead">GPG Part 1 - September 23, 2014</h1>
+            <div id="introduction" class="section">
+                <h2><a href="#introduction"><span>Introduction</span></a></h2>
 
-                    <h2 class="content-subhead"><b>Introduction</b></h2>
-                    <p>
-                    GPG is a key-based encryption system. Each user creates a keypair,
-                    which contains both a Public and a Private Key.
-                    </p><p>
-                    Public Keys should be shared with <b>everyone</b>! Someone can
-                    encrypt a message with a Public Key, and only the user with the
-                    paired Private Key can decrypt it. This is the basis of key-based
-                    encryption.
-                    </p><p>
-                    Private should be kept <b>private</b>! If your Private Key is
-                    compromised, other people could pretend to be you! Luckily,
-                    in order to compromise a Private Key, both the Private Key and the
-                    password to the Private Key are needed.
-                    </p>
+                <p>
+                GPG is a key-based encryption system. Each user creates a keypair,
+                which contains both a Public and a Private Key.
+                </p><p>
+                Public Keys should be shared with <b>everyone</b>! Someone can
+                encrypt a message with a Public Key, and only the user with the
+                paired Private Key can decrypt it. This is the basis of key-based
+                encryption.
+                </p><p>
+                Private should be kept <b>private</b>! If your Private Key is
+                compromised, other people could pretend to be you! Luckily,
+                in order to compromise a Private Key, both the Private Key and the
+                password to the Private Key are needed.
+                </p>
+            </div>
 
-                    <h2 class="content-subhead"><b>Example</b></h2>
-                    <p>
-                    <b>Alice</b> wants to send a message to <b>Bob</b> so that only <b>Bob</b> can read it.
-                    For simplicity's sake, we'll call the message: <code>msg.txt</code>.<br><br>
+            <div id="example" class="section">
+                <h2><a href="#example"><span>Example</span></a></h2>
 
-                    So, what does <b>Alice</b> do? Well first she grabs <b>Bob</b>'s Public Key off of
-                    the internet, (which <b>Bob</b> should have posted somewhere online or emailed it).
-                    Then <b>Alice</b> encrypts <code>msg.txt</code> with <b>Bob</b>'s Public Key.
-                    And finally, <b>Alice</b> can post the message online or email it to <b>Bob</b>,
-                    knowing fully well that only <b>Bob</b> will be able to decrypt her message.<br><br>
+                <p>
+                <b>Alice</b> wants to send a message to <b>Bob</b> so that only <b>Bob</b> can read it.
+                For simplicity's sake, we'll call the message: <code>msg.txt</code>.<br><br>
 
-                    <em>The End.</em>
+                So, what does <b>Alice</b> do? Well first she grabs <b>Bob</b>'s Public Key off of
+                the internet, (which <b>Bob</b> should have posted somewhere online or emailed it).
+                Then <b>Alice</b> encrypts <code>msg.txt</code> with <b>Bob</b>'s Public Key.
+                And finally, <b>Alice</b> can post the message online or email it to <b>Bob</b>,
+                knowing fully well that only <b>Bob</b> will be able to decrypt her message.<br><br>
 
-                    <h2 class="content-subhead"><b>Actually Doing It!</b></h2>
-                    <p>Ah... Finally, after a long, laborious introduction we can now begin to encrypt stuff!</p>
-                    <p>First let's create a fresh keypair.<br>If it asks you anything about key type, keysize, etc, just <b>go with the defaults :)</b></p>
-                    <p>Note: You should try to have as little as possible personal keypairs. Giving a person a key that they know you'll have for a while is better
-                    than giving them a key that you may or may not change within the next month. Get what I'm saying?</p>
-                    <p>If you already have a keypair, you can skip this step.</p>
-                    <pre><code class="bash">ryan@delta ~/example $ gpg --gen-key
+                <em>The End.</em>
+            </div>
+
+            <div id="actually-doing-it" class="section">
+                <h2><a href="#actually-doing-it"><span>Actually Doing It!</span></a></h2>
+
+                <p>Ah... Finally, after a long, laborious introduction we can now begin to encrypt stuff!</p>
+                <p>First let's create a fresh keypair.<br>If it asks you anything about key type, keysize, etc, just <b>go with the defaults :)</b></p>
+                <p>Note: You should try to have as little as possible personal keypairs. Giving a person a key that they know you'll have for a while is better
+                than giving them a key that you may or may not change within the next month. Get what I'm saying?</p>
+                <p>If you already have a keypair, you can skip this step.</p>
+                <pre><code class="bash">ryan@delta ~/example $ gpg --gen-key
 gpg (GnuPG) 2.0.26; Copyright (C) 2013 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -93,10 +89,10 @@ What keysize do you want? (2048)
 Requested keysize is 2048 bits
 Please specify how long the key should be valid.
          0 = key does not expire
-      <n>  = key expires in n days
-      <n>w = key expires in n weeks
-      <n>m = key expires in n months
-      <n>y = key expires in n years
+      &lt;n&gt;  = key expires in n days
+      &lt;n&gt;w = key expires in n weeks
+      &lt;n&gt;m = key expires in n months
+      &lt;n&gt;y = key expires in n years
 Key is valid for? (0)
 Key does not expire at all
 Is this correct? (y/N) y
@@ -107,7 +103,7 @@ Real name: Billy-Bob Joe
 Email address: bbj@website.net
 Comment:
 You selected this USER-ID:
-    "Billy-Bob Joe <bbj@website.net>"
+    "Billy-Bob Joe &lt;bbj@website.net&gt;"
 
 Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? o
 You need a Passphrase to protect your secret key.
@@ -125,15 +121,17 @@ gpg: 3 marginal(s) needed, 1 complete(s) needed, PGP trust model
 gpg: depth: 0  valid:   2  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 2u
 pub   2048R/DF0FDA07 2014-09-24
       Key fingerprint = E81B B32C A5EE 91BE 3624  D5DD BE4D D4CB DF0F DA07
-uid       [ultimate] Billy-Bob Joe <bbj@website.net>
+uid       [ultimate] Billy-Bob Joe &lt;bbj@website.net&gt;
 sub   2048R/C5CFBED7 2014-09-24</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Now What?</b></h2>
-                    <p>
-                    Well, now that you have a keypair, you also have a Public Key and a Private Key.<br>
-                    Let's export that Public Key so we can give it to people!
-                    </p>
-                    <pre><code class="bash">ryan@delta ~/example $ gpg -a --export
+            <div id="now-what" class="section">
+                <h2><a href="#now-what"><span>Now What?</span></a></h2>
+                <p>
+                Well, now that you have a keypair, you also have a Public Key and a Private Key.<br>
+                Let's export that Public Key so we can give it to people!
+                </p>
+                <pre><code class="bash">ryan@delta ~/example $ gpg -a --export
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v2
 
@@ -164,29 +162,31 @@ uu8pxBhQB9ktzT+Ne+MnXh+99phOhaFPgFtiHLMrXju3iKJhlHap+v/EcgXzmFHC
 lwwEmo39DVutvzYkmX3FZ2Qd6wnEm9XK7vIaX7ZKoQ==
 =yHH2
 -----END PGP PUBLIC KEY BLOCK-----</pre></code>
-                    <p>
-                    Yay! Now give that Public Key away! To your best friend,
-                    to the mailman, or to your best friend who happens to be the mailman!
-                    I don't care, just give it away!<br><br>
-                    Just on a side note, if you manage to import the key posted above, send me
-                    an encrypted message... <b>*wink*</b> Although you probably don't know how to do this yet,
-                    (which is fine). You'll learn about this in <a href="gpg_part2.html">GPG - Part 2</a>.
-                    </p>
+                <p>
+                Yay! Now give that Public Key away! To your best friend,
+                to the mailman, or to your best friend who happens to be the mailman!
+                I don't care, just give it away!<br><br>
+                Just on a side note, if you manage to import the key posted above, send me
+                an encrypted message... <b>*wink*</b> Although you probably don't know how to do this yet,
+                (which is fine). You'll learn about this in <a href="gpg-part2.html">GPG - Part 2</a>.
+                </p>
 
-                    <h2 class="content-subhead"><b>Encrypting Files for Recipients</b></h2>
-                    <p>Let's encrypt some stuff!<br>
-                    In this example we'll be encrypting a file with ourselves as the recipient.<br><br>
-                    First we'll create a file to encrypt.</p>
-                    <pre><code class="bash">echo "I love pink poodles." > super_secret.txt</pre></code>
-                    <p>Now we'll encrypt the file... (Replace 'Billy-Bob' with your first name)</p>
-                    <pre><code class="bash">gpg --armor --encrypt --recipient 'Billy-Bob' super_secret.txt</pre></code>
-                    <p>A breakdown of the options:</p>
-                    <pre><code class="bash">--armor      # -a, enable ascii output
+            <div id="encrypting-files-for-recipients" class="section">
+                <h2><a href="#encrypting-files-for-recipients"><span>Encrypting Files for Recipients</span></a></h2>
+
+                <p>Let's encrypt some stuff!<br>
+                In this example we'll be encrypting a file with ourselves as the recipient.<br><br>
+                First we'll create a file to encrypt.</p>
+                <pre><code class="bash">echo "I love pink poodles." > super_secret.txt</pre></code>
+                <p>Now we'll encrypt the file... (Replace 'Billy-Bob' with your first name)</p>
+                <pre><code class="bash">gpg --armor --encrypt --recipient 'Billy-Bob' super_secret.txt</pre></code>
+                <p>A breakdown of the options:</p>
+                <pre><code class="bash">--armor      # -a, enable ascii output
 --encrypt    # -e, we want to encrypt
 --recipient  # -r, who will be able to decrypt it
 # Typically you'll use the short options. However, it helps to understand what the options mean first.</pre></code>
-                    <p>Now you can see the encrypted file. Let's delete the old file too.</p>
-                    <pre><code class="bash">ryan@delta ~/example $ ls
+                <p>Now you can see the encrypted file. Let's delete the old file too.</p>
+                <pre><code class="bash">ryan@delta ~/example $ ls
 super_secret.txt  super_secret.txt.asc
 ryan@delta ~/example $ rm super_secret.txt
 ryan@delta ~/example $ ls
@@ -214,16 +214,19 @@ Dg==
 -----END PGP MESSAGE-----
 ryan@delta ~/example $</pre></code>
 
-                    <p>Yay! We encrypted a file! You can see how the contents of <code>super_secret.txt.asc</code>
-                    look like garbage to the human eye, (but they're really not :D)</p>
+                <p>Yay! We encrypted a file! You can see how the contents of <code>super_secret.txt.asc</code>
+                look like garbage to the human eye, (but they're really not :D)</p>
+            </div>
 
-                    <h2 class="content-subhead"><b>Decrypting Files Addressed to Your Public Key</b></h2>
-                    <p>
-                    We can only decrypt files if they were encrypted with our Public Key.
-                    And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
-                    So that means: <b>We can decrypt it!</b>
-                    </p>
-                    <pre><code class="bash">ryan@delta ~/example $ ls
+            <div id="decrypting-files-addressed-to-your-public-keys" class="section">
+                <h2><a href="#decrypting-files-addressed-to-your-public-keys">
+                    <span>Decrypting Files Addressed to Your Public Keys</span></a></h2>
+                <p>
+                We can only decrypt files if they were encrypted with our Public Key.
+                And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
+                So that means: <b>We can decrypt it!</b>
+                </p>
+                <pre><code class="bash">ryan@delta ~/example $ ls
 super_secret.txt.asc
 ryan@delta ~/example $ gpg super_secret.txt.asc
 password:
@@ -234,24 +237,27 @@ total 8.0K
 
 ryan@delta ~/example $ cat super_secret.txt
 I love pink poodles.</pre></code>
-                    <p>As you can see, decrypting files is <em>incredibly easy</em>.</p>
+                <p>As you can see, decrypting files is <em>incredibly easy</em>.</p>
+            </div>
 
-                    <h2 class="content-subhead"><b>Wrapping It Up</b></h2>
-                    <p>
-                    I hope you learned a lot from that huge dump of information. Now you should be perfectly
-                    capable of encrypting files with Public Keys and sending them to their recipients. And, you
-                    should also be capable of decrypting files that have been encrypted with your Public Key,
-                    (which by far is the easiest thing).<br><br>
-                    You now understand how keypair-based encryption works!<br><br>
-                    Want to know even more about GPG? Read my guide <a href="gpg_part2.html">GPG - Part 2</a>!
-                    </p>
+            <div id="wrapping-up" class="section">
+                <h2><a href="#wrapping-up"><span>Wrapping Up</span></a></h2>
 
-                </div>
+                <p>
+                I hope you learned a lot from that huge dump of information. Now you should be perfectly
+                capable of encrypting files with Public Keys and sending them to their recipients. And, you
+                should also be capable of decrypting files that have been encrypted with your Public Key,
+                (which by far is the easiest thing).<br><br>
+                You now understand how keypair-based encryption works!<br><br>
+                Want to know even more about GPG? Read my guide <a href="gpg-part2.html">GPG - Part 2</a>!
+                </p>
             </div>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

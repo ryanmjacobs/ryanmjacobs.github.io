@@ -1,3 +1,7 @@
 # Vim
 .*.swp
 .*.swo
+
+# Sass build files
+*.css.map
+.sass-cache

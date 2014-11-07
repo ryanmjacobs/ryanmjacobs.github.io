@@ -6,45 +6,33 @@
         <meta name="description" content="A quick reference to MPV -- the best media player on Earth!">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Cheatsheets - MPV</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
         <script src="//yandex.st/highlightjs/8.2/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
-</head>
+    </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li><a href="../tutorials">Tutorials</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/tutorials">Tutorials</a>
+                    <a class="current-link" href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>MPV Cheatsheet</span></a></h1>
+            </div>
 
-                <div class="content">
-                    <h1 class="content-subhead">MPV Cheatsheet</h1>
-                    <h2 class="content-subhead"><b>a free, open source, and cross-platform media player</b></h2>
-
-                    <h2 class="content-subhead"><b>Typical Options</b></h2>
-                    <pre><code class="bash">mpv --fs                    # Play fullscreen
+            <div id="typical-options" class="section">
+                <h2><a href="#typical-options"><span>Typical Options</span></a></h2>
+                <pre><code class="bash">mpv --fs                    # Play fullscreen
 mpv --start=&lt;time&gt;          # Seek to given (percent, seconds, or hh:mm:ss)
 mpv --speed=&lt;0.01-100&gt;      # Slow down or speed up playback by the factor given.
 
@@ -53,9 +41,11 @@ mpv --no-video              # Don't play video
 
 mpv --sub-file=&lt;file&gt;       # Specify subtitle file
 mpv --playlist=&lt;file&gt;       # Specify playlist file</pre></code>
+            </div>
 
-                    <h2 class="content-subhead"><b>Shortcuts</b></h2>
-                    <pre><code class="bash">## File Navigation ##
+            <div id="shortcuts" class="section">
+                <h2><a href="#shortcuts"><span>Shortcuts</span></a></h2>
+                <pre><code class="bash">## File Navigation ##
 LEFT and RIGHT              # Seek backward/forward 5 seconds.
 UP and DOWN                 # Seek forward/backward 1 minute.
 p / SPACE                   # Pause, (pressing again unpauses).
@@ -77,14 +67,14 @@ BACKSPACE                   # Reset playback speed to normal.
 s                           # Take a screenshot.
 m                           # Mute sound.
 f                           # Toggle fullscreen.
-T                           # Toggle stay-on-top.
-</pre></code>
-                </div>
+T                           # Toggle stay-on-top.</pre></code>
             </div>
         </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
-
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

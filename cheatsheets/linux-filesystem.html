@@ -6,8 +6,7 @@
         <meta name="description" content="Curious of what the /tmp directory is for? What about /var or /boot? Read all about it in this quick reference guide!">
         <meta name="author" content="Ryan Jacobs">
         <title>Ryan Jacobs - Cheatsheets - Linux Filesystem</title>
-        <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css">
-        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../css/style.css">
 
         <!-- highlight.js -->
         <link rel="stylesheet" href="//yandex.st/highlightjs/8.2/styles/default.min.css">
@@ -16,114 +15,107 @@
 </head>
 
     <body>
-        <div id="layout">
-            <a href="#menu" id="menuLink" class="menu-link"><span></span></a>
-
-            <div id="menu">
-                <div class="pure-menu pure-menu-open">
-                    <a class="pure-menu-heading" href="../home">Ryan Jacobs</a>
-
-                    <ul>
-                        <li><a href="../">Splash Page</a></li>
-                        <li><a href="../home">Home</a></li>
-                        <li><a href="../repositories">Repositories</a></li>
-                        <li><a href="../tutorials">Tutorials</a></li>
-                        <li class="menu-item-divided pure-menu-selected"><a href="./index.html">Cheatsheets</a></li>
-                    </ul>
-                </div>
+        <div class="container">
+            <div class="header-and-nav">
+                <h1><a href="/">Ryan Jacobs</a></h1><hr>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/projects">Projects</a>
+                    <a href="/tutorials">Tutorials</a>
+                    <a class="current-link" href="/cheatsheets">Cheatsheets</a>
+                </nav>
             </div>
 
-            <div id="main">
-                <div class="header">
-                    <h1>Ryan Jacobs</h1>
-                    <h2>Cool Guy Extraordinaire</h2>
-                </div>
+            <div class="section">
+                <h1><a href="#"><span>Linux Filesystem</span></a></h1>
 
-                <div class="content">
-                    <h1 class="content-subhead">Linux Filesystem</h1>
-
-                    <pre><code class="bash">ryan@delta ~ $ ls /
+                <pre><code class="bash">ryan@delta ~ $ ls /
 bin   dev  home  lib64       mnt  proc  run   srv  tmp  var
 boot  etc  lib   lost+found  opt  root  sbin  sys  usr</pre></code>
-
-                    <h2 class="content-subhead"><b>Root Filesystem</b></h2>
-                    <table class="pure-table pure-table-bordered pure-table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr> <td><b>/</b></td>          <td>Very top of of the filesystem. Stores the following directories.</td> </tr>
-
-                            <tr> <td><b>/bin</b></td>        <td>Essential binaries that need to be available to all users, e.g., <code>bash</code>, <code>cat</code>, <code>cp</code>, <code>ls</code>.</td> </tr>
-                            <tr> <td><b>/boot</b></td>       <td>Boot loader files, e.g., kernels, initrd, GRUB.</td> </tr>
-                            <tr> <td><b>/dev</b></td>        <td>Essential devices. Everything in Linux is a file; e.g., <code>/dev/null</code>, <code>/dev/sda</code></td> </tr>
-                            <tr> <td><b>/etc</b></td>        <td>System-wide configuration files.</td> </tr>
-                            <tr> <td><b>/home</b></td>       <td>User's home directories. Contains saved files, personal settings, etc.</td> </tr>
-                            <tr> <td><b>/lib</b></td>        <td>Libraries essential for binaries in <code>/bin/</code> and <code>/sbin/</code>.</td> </tr>
-                            <tr> <td><b>/lib32</b></td>      <td>Special 32-bit libraries.</td> </tr>
-                            <tr> <td><b>/lib64</b></td>      <td>Special 64-bit libraries.</td> </tr>
-                            <tr> <td><b>/lost+found</b></td> <td>Used by <code>fsck</code> to repair any damages to the filesystem; i.e. unlinked files.</td> </tr>
-                            <tr> <td><b>/media</b></td>      <td>Mount points for removable media.</td> </tr>
-                            <tr> <td><b>/mnt</b></td>        <td>Mount points for manually mounted devices.</td> </tr>
-                            <tr> <td><b>/opt</b></td>        <td>Optional application software packages; i.e. Third-party software.</td> </tr>
-                            <tr> <td><b>/proc</b></td>       <td>Virtual filesystem providing process and kernel information as files.</td> </tr>
-                            <tr> <td><b>/root</b></td>       <td>Home directory for the <code>root</code> user.</td> </tr>
-                            <tr> <td><b>/run</b></td>        <td>Information about the running system since last boot, e.g., currently logged-in users and running daemons.</td> </tr>
-                            <tr> <td><b>/sbin</b></td>       <td>Essential system binaries that required <code>root</code> privileges; e.g., <code>init</code>, <code>ip</code>, <code>mount</code></td> </tr>
-                            <tr> <td><b>/srv</b></td>        <td>Data served by the system, e.g., <code>ftp</code> or <code>http</code></td> </tr>
-                            <tr> <td><b>/sys</b></td>        <td>Contains hardware information and control, e.g., temperature, fan, battery, disk, CPU.</td> </tr>
-                            <tr> <td><b>/tmp</b></td>        <td>Temporary files. All users have access, so don't store vital information! Wiped on every boot.</td> </tr>
-                            <tr> <td><b>/usr</b></td>        <td>Stores read-only user data. Contains the majority of user utilities and applications.</td> </tr>
-                            <tr> <td><b>/var</b></td>        <td>Variable files; e.g., logs, spool files, and caches.</td> </tr>
-                        </tbody>
-                    </table>
-
-                    <h2 class="content-subhead"><b>/usr</b> Subdirectories</h2>
-                    <table class="pure-table pure-table-bordered pure-table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr> <td><b>/usr/bin</b></td>     <td>Non-essential command binaries.</td> </tr>
-                            <tr> <td><b>/usr/include</b></td> <td>Standard include files.</td> </tr>
-                            <tr> <td><b>/usr/lib</b></td>     <td>Libraries for the binaries for in <code>/usr/bin</code> and <code>/usr/sbin</code>.</td> </tr>
-                            <tr> <td><b>/usr/local</b></td>   <td>Local data, specific to the host. Typically contains a <code>bin</code>, <code>lib</code>, and <code>share.</code></td> </tr>
-                            <tr> <td><b>/usr/sbin</b></td>    <td>Non-essential system binaries.</td> </tr>
-                            <tr> <td><b>/usr/share</b></td>   <td>Platform-independent data, e.g., manuals, documentations, examples, etc.</td> </tr>
-                        </tbody>
-                    </table>
-
-                    <h2 class="content-subhead"><b>/var</b> Subdirectories</h2>
-                    <table class="pure-table pure-table-bordered pure-table-striped">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr> <td><b>/var/cache</b></td> <td>Application cache data. Can be deleted without loss of data.</td> </tr>
-                            <tr> <td><b>/var/lib</b></td>   <td>State information. Persistent data modified by programs <em>as</em> they run; e.g., databases.</td> </tr>
-                            <tr> <td><b>/var/lock</b></td>  <td>Lock files. Keeping track of what files are currently in use.</td> </tr>
-                            <tr> <td><b>/var/log</b></td>   <td>Log files. Created by various programs.</td> </tr>
-                            <tr> <td><b>/var/tmp</b></td>   <td>Temporary files to be preserved between reboots.</td> </tr>
-                        </tbody>
-                    </table>
-
-
-
-                </div>
             </div>
 
-        <script src="../ui.js"></script>
-        <script src="../myAnalytics.js"></script>
+            <div id="root-filesystem" class="section">
+                <h2><a href="#root-filesystem"><span>Root Filesystem</span></a></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
 
+                    <tbody>
+                        <tr> <td><b>/</b></td>          <td>Very top of of the filesystem. Stores the following directories.</td> </tr>
+
+                        <tr> <td><b>/bin</b></td>        <td>Essential binaries that need to be available to all users, e.g., <code>bash</code>, <code>cat</code>, <code>cp</code>, <code>ls</code>.</td> </tr>
+                        <tr> <td><b>/boot</b></td>       <td>Boot loader files, e.g., kernels, initrd, GRUB.</td> </tr>
+                        <tr> <td><b>/dev</b></td>        <td>Essential devices. Everything in Linux is a file; e.g., <code>/dev/null</code>, <code>/dev/sda</code></td> </tr>
+                        <tr> <td><b>/etc</b></td>        <td>System-wide configuration files.</td> </tr>
+                        <tr> <td><b>/home</b></td>       <td>User's home directories. Contains saved files, personal settings, etc.</td> </tr>
+                        <tr> <td><b>/lib</b></td>        <td>Libraries essential for binaries in <code>/bin/</code> and <code>/sbin/</code>.</td> </tr>
+                        <tr> <td><b>/lib32</b></td>      <td>Special 32-bit libraries.</td> </tr>
+                        <tr> <td><b>/lib64</b></td>      <td>Special 64-bit libraries.</td> </tr>
+                        <tr> <td><b>/lost+found</b></td> <td>Used by <code>fsck</code> to repair any damages to the filesystem; i.e. unlinked files.</td> </tr>
+                        <tr> <td><b>/media</b></td>      <td>Mount points for removable media.</td> </tr>
+                        <tr> <td><b>/mnt</b></td>        <td>Mount points for manually mounted devices.</td> </tr>
+                        <tr> <td><b>/opt</b></td>        <td>Optional application software packages; i.e. Third-party software.</td> </tr>
+                        <tr> <td><b>/proc</b></td>       <td>Virtual filesystem providing process and kernel information as files.</td> </tr>
+                        <tr> <td><b>/root</b></td>       <td>Home directory for the <code>root</code> user.</td> </tr>
+                        <tr> <td><b>/run</b></td>        <td>Information about the running system since last boot, e.g., currently logged-in users and running daemons.</td> </tr>
+                        <tr> <td><b>/sbin</b></td>       <td>Essential system binaries that required <code>root</code> privileges; e.g., <code>init</code>, <code>ip</code>, <code>mount</code></td> </tr>
+                        <tr> <td><b>/srv</b></td>        <td>Data served by the system, e.g., <code>ftp</code> or <code>http</code></td> </tr>
+                        <tr> <td><b>/sys</b></td>        <td>Contains hardware information and control, e.g., temperature, fan, battery, disk, CPU.</td> </tr>
+                        <tr> <td><b>/tmp</b></td>        <td>Temporary files. All users have access, so don't store vital information! Wiped on every boot.</td> </tr>
+                        <tr> <td><b>/usr</b></td>        <td>Stores read-only user data. Contains the majority of user utilities and applications.</td> </tr>
+                        <tr> <td><b>/var</b></td>        <td>Variable files; e.g., logs, spool files, and caches.</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="usr-subdirectories" class="section">
+                <h2><a href="#usr-subdirectories"><span><b>/usr</b> Subdirectories</span></a></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> <td><b>/usr/bin</b></td>     <td>Non-essential command binaries.</td> </tr>
+                        <tr> <td><b>/usr/include</b></td> <td>Standard include files.</td> </tr>
+                        <tr> <td><b>/usr/lib</b></td>     <td>Libraries for the binaries for in <code>/usr/bin</code> and <code>/usr/sbin</code>.</td> </tr>
+                        <tr> <td><b>/usr/local</b></td>   <td>Local data, specific to the host. Typically contains a <code>bin</code>, <code>lib</code>, and <code>share.</code></td> </tr>
+                        <tr> <td><b>/usr/sbin</b></td>    <td>Non-essential system binaries.</td> </tr>
+                        <tr> <td><b>/usr/share</b></td>   <td>Platform-independent data, e.g., manuals, documentations, examples, etc.</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="var-subdirectories" class="section">
+                <h2><a href="#var-subdirectories"><span><b>/var</b> Subdirectories</span></a></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Purpose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr> <td><b>/var/cache</b></td> <td>Application cache data. Can be deleted without loss of data.</td> </tr>
+                        <tr> <td><b>/var/lib</b></td>   <td>State information. Persistent data modified by programs <em>as</em> they run; e.g., databases.</td> </tr>
+                        <tr> <td><b>/var/lock</b></td>  <td>Lock files. Keeping track of what files are currently in use.</td> </tr>
+                        <tr> <td><b>/var/log</b></td>   <td>Log files. Created by various programs.</td> </tr>
+                        <tr> <td><b>/var/tmp</b></td>   <td>Temporary files to be preserved between reboots.</td> </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <script src="../js/myAnalytics.js"></script>
     </body>
+
+    <footer>
+        <p class="copyright">&copy; 2014 <a href="/">Ryan Jacobs</a></p>
+    </footer>
 </html>

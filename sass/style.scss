@@ -1,0 +1,175 @@
+/**
+ * General styling for my site.
+ * Author: Ryan Jacobs <ryan.mjacobs@gmail.com>
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,600,700);
+
+$text-color: #343434; //dark-ish gray
+$page-width: 700px;
+$link-underline-color: hsl(360, 100%, 72%);
+
+html {
+    font-family: "Crimson Text", Palatino, Georgia, serif;
+    color: $text-color;
+
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0px 0px 35px; // bottom = height of footer
+}
+
+h1,h2,h3,h4,h5,h6,footer {
+    text-align: center;
+}
+
+a {
+    color: $text-color;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 250ms ease-in;
+    &:hover { color: darken(red, 5); }
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    margin-bottom: 25px;
+    &, th, td {
+        padding: 5px;
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+}
+
+.container {
+    width: $page-width;
+    margin: 0 auto;
+    padding: 0px 25px 0px;
+}
+/* Modify page width for smaller screens */
+@media screen and (max-width: ($page-width)+50) {
+    .container { width: auto; }
+}
+
+
+.header-and-nav {
+    font-size: 20px;
+    text-align: center;
+    margin-top: 0.75em;
+    margin-bottom: 1.5em;
+
+    h1 { margin: 0px; font-size: 48px; font-weight: normal; }
+    h2 { margin-top: 1.5em; font-size: 32px; font-weight: 300; }
+    hr { width: 50%; }
+
+    h1 a:link  { border: none; }
+    h1 a:hover { border: none; }
+
+    a {
+        color: $text-color;
+        font-size: inherit;
+        margin: 0px 10px 0px;
+        text-decoration: none;
+
+        transition: border .25s ease-in-out;
+        border-bottom: 2px solid white;
+        &:hover {
+            border-bottom: 2px solid $link-underline-color;
+        }
+    }
+
+    .current-link {
+        border-bottom: 2px solid lightgray;
+    }
+}
+
+/**
+ * LINK DUMPS (for projects, tutorials, cheatsheets, etc)
+ */
+.link-dump {
+    ul, li {
+        list-style: none;
+        margin-left: 0px;
+        padding-left: 0px;
+
+        text-indent: -1em;
+        font-size: 2em;
+    }
+}
+
+/**
+ * TEXT SECTIONS
+ */
+.section {
+    margin: 0px 0px 5px;
+    padding: 0px;
+
+    /* Title of each section */
+    h1, h2 {
+        margin: 0px;
+        a {
+            color: $text-color;
+            text-decoration: none;
+            span {
+                display: inline-block;
+                font-size: inherit;
+                height: 1.4em; // bad, assumes <h1> font-size is 2em
+                transition: border .25s ease-in-out;
+                border-bottom: 2px solid white;
+                &:hover {
+                    border-bottom: 2px solid $link-underline-color;
+                }
+            }
+        }
+    }
+
+    /* text area */
+    p  {
+        margin-top: 0px;
+        font-size: 19px;
+        line-height: 1.1em;
+    }
+
+    /* inline code, e.g. "run this: <code>echo hi</code>" */
+    .inline-code {
+        font: 14px monospace;
+    }
+}
+
+footer {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 35px;
+    width: 100%;
+
+    a,p {
+        color: darken($text-color, 4);
+        font-size: 18px;
+    }
+
+    a {
+        margin: 0px 0.75em;
+        text-decoration: none;
+        transition: border 150ms ease-in;
+        border-bottom: 1px solid white;
+        &:hover {
+            color: $text-color;
+            border-bottom: 1px solid gray;
+        }
+    }
+
+    .copyright {
+        margin: 0px;
+        font-size: 16px;
+        text-align: center;
+        a { margin: 0px; }
+    }
+}
