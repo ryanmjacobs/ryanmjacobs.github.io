@@ -11,10 +11,10 @@
     var faceIndex = 0;
     var faceImages = [
         "headshots/shot_2.png", //best?
-        "headshots/shot_1.png",
-        "headshots/shot_3.png",
-        "headshots/shot_4.png",
-        "headshots/shot_5.png"
+      //"headshots/shot_1.png",
+      //"headshots/shot_3.png",
+      //"headshots/shot_4.png",
+      //"headshots/shot_5.png"
     ];
 
     document.onkeydown = function(e) {
