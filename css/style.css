@@ -9,6 +9,9 @@ html {
   position: relative;
   min-height: 100%; }
 
+::selection {
+  background: #ff7070; }
+
 body {
   margin: 0px 0px 50px; }
 
@@ -84,6 +87,13 @@ table {
   padding-left: 0px;
   text-indent: -1em;
   font-size: 2em; }
+
+/**
+ * BLOCKQUOTES
+ */
+blockquote {
+  padding-left: 10px;
+  border-left: 2px solid #ffa3a3; }
 
 /**
  * TEXT SECTIONS

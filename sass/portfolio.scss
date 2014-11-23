@@ -5,8 +5,12 @@
 
 @import "style.scss";
 
-// three main sections
-.about, .work, .contact {
+$arrows-height: 60%;
+
+/**
+ * THREE MAIN SECTIONS
+ */
+#about, #work-and-contact {
     @extend .section;
 
     // section headers
@@ -14,8 +18,48 @@
         font-weight: normal;
         text-align: left;
         padding-bottom: 10px;
+        font-size: 2.5em;
     }
     a span {
         line-height: 1em;
     }
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+#work-and-contact { opacity: 0; display: none; }
+#sections {
+    position: relative;
+    overflow: hidden;
+}
+
+/**
+ * NAVIGATION ARROWS
+ */
+#left-arrow, #right-arrow {
+    width: 0;
+    height: 0;
+
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-right: 15px solid dimgray;
+
+    position: absolute;
+    top: $arrows-height;
+    left: 20%;
+
+    &:hover { cursor: pointer; }
+}
+#right-arrow {
+    border-right: none;
+    border-left: 15px solid dimgray;
+
+    position: absolute;
+    top: $arrows-height;
+    left: 80%;
+
+    &:hover { cursor: pointer; }
 }
