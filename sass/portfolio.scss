@@ -5,22 +5,17 @@
 
 @import "style.scss";
 
-.photo {
-    margin: 10px auto 10px;
-}
-
 // three main sections
 .about, .work, .contact {
     @extend .section;
-}
-.work    p { text-align: center; }
-.contact p { text-align: center; margin: 10px; }
 
-.skills-graph {
-    margin: 10px auto;
+    // section headers
     h1 {
-        font-size: 16px;
         font-weight: normal;
+        text-align: left;
+        padding-bottom: 10px;
     }
-    width: ($page-width);
+    a span {
+        line-height: 1em;
+    }
 }
