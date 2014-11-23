@@ -10,8 +10,17 @@ html {
   min-height: 100%; }
 
 body {
-  margin: 0px 0px 35px; }
+  margin: 0px 0px 50px; }
 
+.container {
+  width: 700px;
+  margin: 0 auto;
+  padding: 0px 25px 0px; }
+
+/* Modify page width for smaller screens */
+@media screen and (max-width: 750px) {
+  .container {
+    width: auto; } }
 h1, h2, h3, h4, h5, h6, footer {
   text-align: center; }
 
@@ -35,15 +44,6 @@ table {
     border: 1px solid black;
     border-collapse: collapse; }
 
-.container {
-  width: 700px;
-  margin: 0 auto;
-  padding: 0px 25px 0px; }
-
-/* Modify page width for smaller screens */
-@media screen and (max-width: 750px) {
-  .container {
-    width: auto; } }
 .header-and-nav {
   font-size: 20px;
   text-align: center;
@@ -95,18 +95,23 @@ table {
   /* text area */
   /* inline code, e.g. "run this: <code>echo hi</code>" */ }
   .section h1, .section h2 {
-    margin: 0px; }
+    margin: 0px;
+    margin-bottom: -10px; }
     .section h1 a, .section h2 a {
       color: #343434;
       text-decoration: none; }
-      .section h1 a span, .section h2 a span {
-        display: inline-block;
-        font-size: inherit;
-        height: 1.4em;
-        transition: border .25s ease-in-out;
-        border-bottom: 2px solid white; }
-        .section h1 a span:hover, .section h2 a span:hover {
-          border-bottom: 2px solid #ff7070; }
+    .section h1 span, .section h2 span {
+      display: inline-block;
+      font-size: inherit;
+      line-height: .7em;
+      transition: border .25s ease-in-out;
+      border-bottom: 2px solid white; }
+      .section h1 span:hover, .section h2 span:hover {
+        border-bottom: 2px solid #ff7070; }
+  .section h2 {
+    margin-bottom: -5px; }
+    .section h2 span {
+      line-height: .9em; }
   .section p {
     margin-top: 0px;
     font-size: 19px;
@@ -116,24 +121,8 @@ table {
 
 footer {
   position: absolute;
+  height: 50px;
+  width: 100%;
   left: 0px;
   bottom: 0px;
-  height: 35px;
-  width: 100%; }
-  footer a, footer p {
-    color: #2a2a2a;
-    font-size: 18px; }
-  footer a {
-    margin: 0px 0.75em;
-    text-decoration: none;
-    transition: border 150ms ease-in;
-    border-bottom: 1px solid white; }
-    footer a:hover {
-      color: #343434;
-      border-bottom: 1px solid gray; }
-  footer .copyright {
-    margin: 0px;
-    font-size: 16px;
-    text-align: center; }
-    footer .copyright a {
-      margin: 0px; }
+  font-size: 16px; }

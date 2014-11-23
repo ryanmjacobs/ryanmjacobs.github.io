@@ -18,7 +18,17 @@ html {
 }
 
 body {
-    margin: 0px 0px 35px; // bottom = height of footer
+    margin: 0px 0px 50px; // bottom = height of footer
+}
+
+.container {
+    width: $page-width;
+    margin: 0 auto;
+    padding: 0px 25px 0px;
+}
+/* Modify page width for smaller screens */
+@media screen and (max-width: ($page-width)+50) {
+    .container { width: auto; }
 }
 
 h1,h2,h3,h4,h5,h6,footer {
@@ -47,17 +57,6 @@ table {
         border-collapse: collapse;
     }
 }
-
-.container {
-    width: $page-width;
-    margin: 0 auto;
-    padding: 0px 25px 0px;
-}
-/* Modify page width for smaller screens */
-@media screen and (max-width: ($page-width)+50) {
-    .container { width: auto; }
-}
-
 
 .header-and-nav {
     font-size: 20px;
@@ -114,20 +113,27 @@ table {
     /* Title of each section */
     h1, h2 {
         margin: 0px;
+        margin-bottom: -10px;
+
         a {
             color: $text-color;
             text-decoration: none;
-            span {
-                display: inline-block;
-                font-size: inherit;
-                height: 1.4em; // bad, assumes <h1> font-size is 2em
-                transition: border .25s ease-in-out;
-                border-bottom: 2px solid white;
-                &:hover {
-                    border-bottom: 2px solid $link-underline-color;
-                }
+        }
+
+        span {
+            display: inline-block;
+            font-size: inherit;
+            line-height: .7em;
+            transition: border .25s ease-in-out;
+            border-bottom: 2px solid white;
+            &:hover {
+                border-bottom: 2px solid $link-underline-color;
             }
         }
+    }
+    h2 {
+        margin-bottom: -5px;
+        span { line-height: .9em; }
     }
 
     /* text area */
@@ -145,31 +151,11 @@ table {
 
 footer {
     position: absolute;
-    left: 0px;
-    bottom: 0px;
-    height: 35px;
+    height: 50px;
     width: 100%;
 
-    a,p {
-        color: darken($text-color, 4);
-        font-size: 18px;
-    }
+    left: 0px;
+    bottom: 0px;
 
-    a {
-        margin: 0px 0.75em;
-        text-decoration: none;
-        transition: border 150ms ease-in;
-        border-bottom: 1px solid white;
-        &:hover {
-            color: $text-color;
-            border-bottom: 1px solid gray;
-        }
-    }
-
-    .copyright {
-        margin: 0px;
-        font-size: 16px;
-        text-align: center;
-        a { margin: 0px; }
-    }
+    font-size: 16px;
 }
