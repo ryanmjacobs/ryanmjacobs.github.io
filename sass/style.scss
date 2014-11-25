@@ -122,7 +122,7 @@ blockquote {
     margin: 0px 0px 5px;
     padding: 0px;
 
-    /* Title of each section */
+    // title of each section
     h1, h2 {
         margin: 0px;
         margin-bottom: -10px;
@@ -154,16 +154,16 @@ blockquote {
         span { line-height: .9em; }
     }
 
-    /* text area */
+    // text area
     p  {
         margin-top: 0px;
         font-size: 19px;
         line-height: 1.1em;
     }
 
-    /* inline code, e.g. "run this: <code>echo hi</code>" */
-    .inline-code {
-        font: 14px monospace;
+    // inline code
+    code {
+        font: 15px monospace;
     }
 }
 
