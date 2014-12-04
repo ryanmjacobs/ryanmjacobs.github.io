@@ -36,8 +36,8 @@
 
         // do something on actual arrow keypresses
         $("body").keyup(function(e) {
-            if (e.keyCode == 37) about(true);  // left arrow
-            if (e.keyCode == 39) about(false); // right arrow
+            if (e.which == 37) about(true);  // left arrow
+            if (e.which == 39) about(false); // right arrow
         });
 
         // give input True if currently on "about" section
