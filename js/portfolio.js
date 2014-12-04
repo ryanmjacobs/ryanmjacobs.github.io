@@ -23,8 +23,8 @@
 (function (window, document) {
     $(document).ready(function() {
 
-        // true =about slide is NOT showing
-        // false=about slide is showing
+        // true =about slide is NOT currently showing
+        // false=about slide is currently showing
         var about_state = false;
 
         // initial arrows
@@ -36,12 +36,12 @@
 
         // do something on actual arrow keypresses
         $("body").keyup(function(e) {
-            if (e.which == 37) about(true);  // left arrow
-            if (e.which == 39) about(false); // right arrow
+            if (e.which == 37) about(false); // left arrow
+            if (e.which == 39) about(true);  // right arrow
         });
 
-        // give input True if currently on "about" section
-        // to move to work-and-contact section
+        // state=true  -> show work/contact section
+        // state=false -> show about section
         function about(state) {
 
             // if the state is the same as the last
