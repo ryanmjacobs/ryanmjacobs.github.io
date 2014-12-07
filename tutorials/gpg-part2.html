@@ -101,6 +101,7 @@ gpg:         new signatures: 1
 
 ryan@delta ~ $ gpg --sign-key 5F8A8181 # Trust the key
 </pre></code>
+                <p>
                 Yay! We got my key! (By the way, 5F8A8181 is my Key_ID.)<br>
                 There may need to be some communication via email or other to determine which
                 Key_ID is the person's you want.
@@ -149,9 +150,11 @@ OUSbQNTEOe0sDkGPtlrFp9+EtjZ9W5Iu2ia7SLg8OBNBNmaivzYkdPEg7mTPEoNc
 sBPz
 =pssN
 -----END PGP MESSAGE-----</pre></code>
+                <p>
                 Yay! We encrypted a file with someone else's Public Key! Particularly mine!<br><br>
                 Now if you try to decrypt this file, you'll find that you can't. Why? You don't
                 have the Private Key!
+                </p>
                 <pre><code class="bash"># Decrypt the file when you <em><b>don't have</b></em> the Private Key
 not_ryan@other_computer ~ $ gpg secret_message.txt.asc
 gpg: decryption failed: No secret key
@@ -183,7 +186,9 @@ I love pink poodles.
                     <li>To ensure that a file will not be tampered with (protect its integrity)</li>
                     <li>To show that you trust someone's key</li>
                 </ol>
+                </p>
 
+                <p>
                 The first use is when you sign a file to ensure it's integrity.
                 Think checksums. If someone modifies what you said in an email and it
                 was GPG signed, '<code>gpg --verify</code>' will let you know
@@ -203,14 +208,16 @@ gpg: Good signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]
 ryan@delta ~/example $ sed -i 's/Do not/Please/g' dont_tamper.txt.asc # Replace 'Do not' with 'Please'
 ryan@delta ~/example $ gpg --verify dont_tamper.txt.asc
 gpg: Signature made Tue 23 Sep 2014 09:39:02 PM PDT using RSA key ID 5F8A8181
-gpg: BAD signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]</pre></code><br>
+gpg: BAD signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]</pre></code>
+                </p>
 
+                <p>
                 Difference between <code>--sign</code> and <code>--clearsign</code>:
                 <pre><code class="bash"># --sign vs --clearsign
 --sign       # sign & output binary; good for non-text files, e.g. images
---clearsign  # sign & output ascii;  good for text files,     e.g. emails</pre></code><br>
+--clearsign  # sign & output ascii;  good for text files,     e.g. emails</pre></code>
 
-                The second use is when you sign someone's key to show that you trust them.<br>
+                <p>
                 Steps to sign someone's key:
                 <ol>
                     <li>Get their Key_ID and fingerprint.</li>
