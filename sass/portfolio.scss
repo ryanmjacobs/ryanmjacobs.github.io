@@ -24,26 +24,20 @@ $arrows-height: 60%;
     }
 
     position: relative;
+    overflow: hidden;
+
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
 }
-#work-and-contact { opacity: 0; display: none; }
-#sections {
-    position: relative;
-    overflow: hidden;
-}
+#work-and-contact {
+    opacity: 0;
+    display: none;
 
-/**
- * CONTACT INFO
- */
-address {
-    font-size: 1.2em;
-    line-height: 1.1em;
-    font-style: normal;
-
-    .email { font-style: italic; font-size: 1.1em; }
+    p {
+        line-height: 150%;
+    }
 }
 
 /**
