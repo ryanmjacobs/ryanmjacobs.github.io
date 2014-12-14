@@ -59,13 +59,13 @@
 ryan@delta ~ $ gpg --list-keys
 /home/ryan/.gnupg/pubring.gpg
 -----------------------------
-pub   4096R/5F8A8181 2013-09-30
+pub   rsa4096/CEED707A 2014-12-13
 uid       [ultimate] Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;
-sub   4096R/2A213FCC 2013-09-30
+sub   rsa4096/26C73A2F 2014-12-13
 
 # Upload our Public Key (found from prior command)
-ryan@delta ~ $ gpg --keyserver pgp.mit.edu --send-keys 5F8A8181
-gpg: sending key 5F8A8181 to hkp server pgp.mit.edu</pre></code>
+ryan@delta ~ $ gpg --keyserver pgp.mit.edu --send-keys CEED707A
+gpg: sending key CEED707A to hkp server pgp.mit.edu</pre></code>
                 </p>
             </div>
 
@@ -80,29 +80,32 @@ gpg: sending key 5F8A8181 to hkp server pgp.mit.edu</pre></code>
                 Let's import his key! By the way, "him" is really me.
                 <pre><code class="bash">ryan@delta ~ $ gpg --keyserver pgp.mit.edu --search-keys 'Ryan Jacobs'
 gpg: searching for "Ryan Jacobs" from hkp server pgp.mit.edu
-(1)     Ryan Jacobs &lt;maroni720@gmail.com&gt;
+(1)     Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;
+          4096 bit RSA key CEED707A, created: 2014-12-13
+(2)     Ryan Jacobs &lt;ryan.jacobs@tacostandstudio.com&gt;
+          2048 bit RSA key D49FDE43, created: 2014-10-28
+(3)     Ryan Jacobs &lt;maroni720@gmail.com&gt;
           2048 bit RSA key 34134FFB, created: 2014-02-08
-(2)     Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;
-        Ryan Jacobs (Dukelana) &lt;ryan.mjacobs@gmail.com&gt;
-          4096 bit RSA key 5F8A8181, created: 2013-09-30
-(3)     Ryan Jacobs (7 day file encryption testing key) &lt;ryan.mjacobs@gmail.co
-          4096 bit RSA key 491D92BF, created: 2013-09-28
 (4)     Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;
-          2048 bit RSA key 5DABDC7F, created: 2013-06-10
-(5)     Ryan Jacobs &lt;ryan@aisla.com&gt;
+        Ryan Jacobs (Dukelana) &lt;ryan.mjacobs@gmail.com&gt;
+          4096 bit RSA key 5F8A8181, created: 2013-09-30 (revoked)
+(5)     Ryan Jacobs (7 day file encryption testing key) &lt;ryan.mjacobs@gmail.co
+          4096 bit RSA key 491D92BF, created: 2013-09-28, expires: 2013-10-05 (expired)
+(6)     Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;
+          2048 bit RSA key 5DABDC7F, created: 2013-06-10, expires: 2013-06-17 (expired)
+(7)     Ryan Jacobs &lt;ryan@aisla.com&gt;
           1024 bit DSA key B1D60BA1, created: 2001-02-14
-(6)     Ryan Jacobs &lt;ryan@aisla.com&gt;
+(8)     Ryan Jacobs &lt;ryan@aisla.com&gt;
           2048 bit RSA key 0C93AE23, created: 2001-02-14
-Keys 1-6 of 6 for "Ryan Jacobs".  Enter number(s), N)ext, or Q)uit &gt; 2
-gpg: requesting key 5F8A8181 from hkp server pgp.mit.edu
-gpg: key 5F8A8181: "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" 1 new signature
+gpg: requesting key CEED707A from hkp server pgp.mit.edu
+gpg: key CEED707A: "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" 1 new signature
 gpg: Total number processed: 1
 gpg:         new signatures: 1
 
-ryan@delta ~ $ gpg --sign-key 5F8A8181 # Trust the key
+ryan@delta ~ $ gpg --sign-key CEED707A # Trust the key
 </pre></code>
                 <p>
-                Yay! We got my key! (By the way, 5F8A8181 is my Key_ID.)<br>
+                Yay! We got my key! (By the way, CEED707A is my Key_ID.)<br>
                 There may need to be some communication via email or other to determine which
                 Key_ID is the person's you want.
                 </p>
@@ -129,51 +132,55 @@ ryan@delta ~/example $ ls
 secret_message.txt.asc
 
 # What does the message say?
-# (Probably gibberish to us humans)
+# (gibberish to us humans)
 ryan@delta ~/example $ cat secret_message.txt.asc
 -----BEGIN PGP MESSAGE-----
 Version: GnuPG v2
 
-hQIMA4WxEsEqIT/MAQ//TpA2KClvNd8VhtyZM+FTMaRFvsu9VS1UXofUj/ya4eEy
-JXVEvdg4D7B8wgn6DBpDEl8P12ULd+hGA91N6lv09PL36TNVlhvyCGxQCsEjJjjU
-Cvp/JaFMcD7mKlsJ4PllYHTgfO7u44R6fCLvNQyN9R9tCS/vLkVsEVioI2YEKVKr
-nZrpyiHdSnyT/tC9gM9ihmZfjoQH3Qjvy6pXmvSvr13raarBbz3RYFHAmaMrd8zs
-UChcV+til2UQ/oYR+wX+iobmwwKT7+CIXF56geVeCuCMOuXpLZlV0qKH4LzkfhBT
-ojkNOyudIYObs8zpyWXh87SNwU0FiQT5OVD8SduTv9JamI5ZjkBHKARpShlEQyOt
-3VQsIlYeJ1lNx2Wi5Q2F6LJtqwTvsYAQXWciCd3lnAtfqKlQtxlH3rcGaqyDgNNy
-usT1seFtrJaGxlUejyJw5LLdK1cGBblRK4W9u+CbcMUed6sfAe2Uc+r82kFk+iM5
-WUxA45xZoEXC3/oVZ7RWX0PSySlVWNd1svfQGRjS5rMhwJ1aLoX2z0pj0s5L7Hi9
-t5JmBQcJjo2xAkiZ9zr/SZdjdU7LoAbuc6jNrz00IjYQl0adgAY0o0m6WGiBw0nM
-eCrPcj6J5uevN4heQBkKk2unipsYLej8TcfZci6+wzaaHtWmayy9HqiBDCo3pGTS
-YgFPt3cnYUToPr2ETsWuaC+Rvx2Y5oWTSNGgw05yB8ipZWFXsHVFRPrkzcpy7Xzq
-OUSbQNTEOe0sDkGPtlrFp9+EtjZ9W5Iu2ia7SLg8OBNBNmaivzYkdPEg7mTPEoNc
-sBPz
-=pssN
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v2
+
+hQIMAyE672omxzovAQ//cCf3TL0FWcUF6BR/mVMXhzzFR6GuiRo6I2E2GPrs8E6U
+VqojYpjYEVChMTXg7h1wrj8npfCkHbqZxwqMmQOhfo12tJLcdmtxDMYgwwoClzAF
+373ume8eOv6QzxQ7LXykXPoe8bqchshFQnQRjIZKKh6MPoSlFqkJOdzdYjpOYGmC
+ilH9Hqf+xCyeqneXX2r+nd7Z+yupdSERnrl4kt88X+KMasoFBGvENHE3tJRjI0e/
+C8eeNroztuGOdFHVO+B8DDrCE/i0p4axwqlNPfYV65n4LGitkIw7D8X1CyhO0r0o
+8QCNNauqLh+eQ9jwgbFCOSTSacunaKhnMTEI2+9isCptsUZ/6GDbZSU4YhWuEHl7
+k1r7qx9q5pFFSA5quVdWFlFYAXWMO2sx/FgdmgpCwP7UTUh2hMKPHX30XkZsQWbQ
+aQdPCtCLUEGk5bEP+4egjsjKJgr2zuy4BKSj9FyhVLHvRGysN1llXJuCseflQml0
+TC7SNCU1H2EJfBHeWKgUzkyTIaEIoFSCCuK/kh9vi7VoBCyH+vK0i0TzUSK/xzA2
+RvOE1KtuqVZoNbH2OFb9d8Grhh8k6SyYveN2cSHtMysI3pqrLCSy8OXRMrKe0EiM
+Il0m3bZKaSo4FKeSp5p2ixPE4dUV8mputLOl4RVthWNTd+tkdFleCpKMfRtFvHLS
+YgGG6vNyAvN8NpQRLz5UsuofXpJ62aBay1hYxeUkWJP49evR7q0ED412kYMG0oNR
+Suyl/aMLI4anyrxKae5ENVNCHJvplAWiXUQbMiapizKPSXw/+cCCKLjtr1o+zxjG
++hxQ
+=2/VC
+
 -----END PGP MESSAGE-----</pre></code>
                 <p>
                 Yay! We encrypted a file with someone else's Public Key! Particularly mine!<br><br>
                 Now if you try to decrypt this file, you'll find that you can't. Why? You don't
                 have the Private Key!
                 </p>
-                <pre><code class="bash"># Decrypt the file when you <em><b>don't have</b></em> the Private Key
+                <pre><code class="bash"># What happens when you decrypt <em><b>without the private key</b></em>?
 not_ryan@other_computer ~ $ gpg secret_message.txt.asc
 gpg: decryption failed: No secret key
 # Oh no! It doesn't work!</pre></code>
 
-                <pre><code class="bash"># Decrypt the file when you <em><b>have</b></em> the Private Key
+                <pre><code class="bash"># What about when you <em><b>have the private key</b></em>?
 ryan@delta ~/example $ gpg secret_message.txt.asc
 
 You need a passphrase to unlock the secret key for user: "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;"
-4096-bit RSA key, ID 2A213FCC, created 2013-09-30 (main key ID 5F8A8181)
+4096-bit RSA key, ID 26C73A2F, created 2014-12-13 (main key ID CEED707A)
 
-gpg: encrypted with 4096-bit RSA key, ID 2A213FCC, created 2013-09-30
+gpg: encrypted with 4096-bit RSA key, ID 26C73A2F, created 2014-12-13
       "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;"
 
 ryan@delta ~/example $ ls
 secret_message.txt  secret_message.txt.asc
 ryan@delta ~/example $ cat secret_message.txt
 I love pink poodles.
-# Ooh... Big surprise, it works.</pre></code>
+# Ooh... big surprise, it works.</pre></code>
                 </p>
             </div>
 
@@ -201,13 +208,13 @@ ryan@delta ~/example $ gpg --clearsign dont_tamper.txt && rm dont_tamper.txt
 
 # Verify the file's integrity
 ryan@delta ~/example $ gpg --verify dont_tamper.txt.asc
-gpg: Signature made Tue 23 Sep 2014 09:39:02 PM PDT using RSA key ID 5F8A8181
+gpg: Signature made Sat 13 Dec 2014 04:27:04 PM PST using RSA key ID CEED707A
 gpg: Good signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]
 
 # Modify the file, then verify integrity
 ryan@delta ~/example $ sed -i 's/Do not/Please/g' dont_tamper.txt.asc # Replace 'Do not' with 'Please'
 ryan@delta ~/example $ gpg --verify dont_tamper.txt.asc
-gpg: Signature made Tue 23 Sep 2014 09:39:02 PM PDT using RSA key ID 5F8A8181
+gpg: Signature made Sat 13 Dec 2014 04:27:04 PM PST using RSA key ID CEED707A
 gpg: BAD signature from "Ryan Jacobs &lt;ryan.mjacobs@gmail.com&gt;" [ultimate]</pre></code>
                 </p>
 

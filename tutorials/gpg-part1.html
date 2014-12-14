@@ -84,7 +84,7 @@ Please select what kind of key you want:
    (2) DSA and Elgamal
    (3) DSA (sign only)
    (4) RSA (sign only)
-Your selection?
+Your selection? 1
 RSA keys may be between 1024 and 4096 bits long.
 What keysize do you want? (2048)
 Requested keysize is 2048 bits
@@ -94,7 +94,7 @@ Please specify how long the key should be valid.
       &lt;n&gt;w = key expires in n weeks
       &lt;n&gt;m = key expires in n months
       &lt;n&gt;y = key expires in n years
-Key is valid for? (0)
+Key is valid for? (0) 0
 Key does not expire at all
 Is this correct? (y/N) y
 
@@ -227,7 +227,7 @@ ryan@delta ~/example $</pre></code>
                 <p>
                 We can only decrypt files if they were encrypted with our Public Key.
                 And, we know that we encrypted <code>super_secret.txt</code> with our Public Key.
-                So that means: <b>We can decrypt it!</b>
+                So that means: <b>we can decrypt it!</b>
                 </p>
                 <pre><code class="bash">ryan@delta ~/example $ ls
 super_secret.txt.asc
@@ -252,7 +252,9 @@ I love pink poodles.</pre></code>
                 should also be capable of decrypting files that have been encrypted with your Public Key,
                 (which by far is the easiest thing).<br><br>
                 You now understand how keypair-based encryption works!<br><br>
-                Want to know even more about GPG? Read my guide <a href="gpg-part2.html">GPG - Part 2</a>!
+
+                Do you want to learn even more about GPG?
+                Read my guide <a href="gpg-part2.html">GPG - Part 2</a>!
                 </p>
             </div>
         </div>
