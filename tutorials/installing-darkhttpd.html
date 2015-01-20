@@ -42,13 +42,13 @@
                 <h2><a href="#debian-ubuntu"><span>Debian/Ubuntu</span></a></h2>
 
                 <pre><code class="bash"># Download and install build tools, (if you don't already have them)
-sudo apt-get update
-sudo apt-get install build-essential</pre></code>
+$ sudo apt-get update
+$ sudo apt-get install build-essential</pre></code>
                 <pre><code class="bash"># Clone repository, generate debian package, and install!
-git clone https://github.com/ryanmjacobs/darkhttpd # clone the repository
-cd darkhttpd                                       # go into repository
-make debian                                        # generate debian package
-sudo dpkg -i darkhttpd.deb                         # install debian package
+$ git clone https://github.com/ryanmjacobs/darkhttpd
+$ cd darkhttpd
+$ make debian
+$ sudo dpkg -i darkhttpd.deb
 </pre></code>
             </div>
 
@@ -71,8 +71,8 @@ ryan@delta ~ $</pre></code>
                 <h2><a href="#an-example"><span>An Example</span></a></h2>
 
                 <p>Here we'll clone <a href="//example.org">example.org</a> and serve it locally.</p>
-                <pre><code class="bash">wget -mpk http://example.org
-darkhttpd example.org --port 1234</pre></code>
+                <pre><code class="bash">$ wget -mpk http://example.org
+$ darkhttpd example.org --port 1234</pre></code>
                 <p>Now point your browser to <b>localhost:1234</b>, and browse the
                 <em>expansive</em> site of <a href="//example.org">example.org</a>.</p>
             </div>
