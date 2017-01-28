@@ -6,6 +6,7 @@
  */
 
 // typography joke
+/* (made obsolete w/ new about page)
 (function (window, document) {
     var comicSansState = false;
     var oldFont = document.body.style.fontFamily;
@@ -18,6 +19,7 @@
     };
 
 }(this, this.document));
+*/
 
 // sliding divs
 (function (window, document) {
